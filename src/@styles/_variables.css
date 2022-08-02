@@ -1,0 +1,34 @@
+:root {
+    --brand-baby-blue: #BAEAFE;
+    --brand-violet-light: #C56DF6;
+    --brand-pink-pop: #FF01DD;
+    --brand-jasmine: #FEDF72;
+    --brand-lavendar: #C56DF6;
+
+    --brand-dark-magenta: #8A2387;
+    --brand-ocean-blue: #0192FF;
+
+    --brand-dark-pink-pop: #E000C2;
+    --brand-pumpkin: #F27121;
+    --brand-pistachio: #A3CC7B;
+    --brand-red-crayola: #E94057;
+
+    --white: #FFFFFF;
+    --brand-white-blend: #FAFAFA;
+    --brand-light-gray: #E5E5E5;
+    --brand-medium-gray: #A3A3A3;
+    --brand-dark-gray: #525252;
+    --brand-dark: #1E293B;
+
+    --brand-indigo: #30425F;
+    --brand-ms-blue: #3E557A;
+    --brand-queen-blue: #4B6895;
+    --brand-whale-blue: #5C7DAD;
+
+    --neutral-black: #1E293B;
+
+    --brand-blue-ice-gradient: linear-gradient(269.78deg, #BBEBFF -48.62%, #0092FF 84.26%);
+    --brand-purple-haze-gradient: linear-gradient(264.51deg, #8A2387 6.8%, #E94057 41.59%, #F27121 97.93%);
+    --brand-peach-pop-gradient: linear-gradient(273.1deg, #FF02DE -13.99%, #F4846C 96.26%);
+    --brand-black-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  }

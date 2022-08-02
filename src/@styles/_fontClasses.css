@@ -1,0 +1,131 @@
+.CardHeader {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 1px;
+}
+
+.CardTextBody {
+    width: 296px;
+    height: 80px;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.ButtonText {
+    font-family: inherit;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.StatusText {
+    font-family: inherit;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.DAONameText {
+    font-family: inherit;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.Header01 {
+    font-family: 'Vollkorn';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 136px;
+    line-height: 165px;
+    letter-spacing: -1px;
+}
+
+.Header02 {
+    font-family: 'Vollkorn';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 90px;
+    line-height: 109px;
+    letter-spacing: -1px;
+}
+
+.Header03 {
+    font-family: 'Vollkorn';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    letter-spacing: -1px;
+}
+
+.Header04 {
+    font-family: 'Vollkorn';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.Subtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 1px;
+}
+
+.TinySubtitle {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+}
+
+.PreTitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 33px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.Title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    letter-spacing: -1px;
+}
+
+.BodyText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.Disclaimer {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 1px;
+}

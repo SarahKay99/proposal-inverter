@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "ES2020",
+    "lib": ["dom", "ES2020"],
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "paths": {
+      "@hooks/*": ["./src/@hooks/*"],
+      "@styles/*": ["./src/@styles*"]
+    },
+    "baseUrl": ".",
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "incremental": true
+  },
+  "exclude": ["node_modules", ".next", "*.js"],
+  "include": ["./src/**/*", "./tests/**/*"]
+}
