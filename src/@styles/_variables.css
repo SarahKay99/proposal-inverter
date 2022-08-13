@@ -25,6 +25,9 @@
     --brand-queen-blue: #4B6895;
     --brand-whale-blue: #5C7DAD;
 
+    --brand-alert-red-error: #FF5252;
+    --brand-alert-orange-warning: #FFB155;
+
     --neutral-black: #1E293B;
 
     --brand-blue-ice-gradient: linear-gradient(269.78deg, #BBEBFF -48.62%, #0092FF 84.26%);
