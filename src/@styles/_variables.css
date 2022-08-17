@@ -24,11 +24,13 @@
     --brand-ms-blue: #3E557A;
     --brand-queen-blue: #4B6895;
     --brand-whale-blue: #5C7DAD;
+    --brand-baby-blue: #BAEAFE;
 
     --brand-alert-red-error: #FF5252;
     --brand-alert-orange-warning: #FFB155;
 
     --neutral-black: #1E293B;
+    --background-color: #282c34;
 
     --brand-blue-ice-gradient: linear-gradient(269.78deg, #BBEBFF -48.62%, #0092FF 84.26%);
     --brand-purple-haze-gradient: linear-gradient(264.51deg, #8A2387 6.8%, #E94057 41.59%, #F27121 97.93%);

@@ -36,6 +36,7 @@ function Card({
                 </DAOWrapper>
                 <Button
                     text={"View"}
+                    onClick={() => {}}
                     rounding={"round"}
                     color={"blueIce"}
                 />

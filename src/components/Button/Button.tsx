@@ -3,14 +3,16 @@ import { ButtonWrapper } from "./Button.style";
 
 interface ButtonProps {
     text: String
-    rounding?: 'default' | 'round'
-    color?: 'default' | 'blueIce'
+    onClick: any
+    rounding?: 'default' | 'round' | number
+    color?: 'default' | 'blueIce' | 'none'
     width?: 'default' | number
     height?: 'default' | number
 }
 
 function Button({
     text,
+    onClick,
     rounding='default',
     color='default',
     width='default',
@@ -23,6 +25,7 @@ function Button({
             color={color}
             width={width}
             height={height}
+            onClick={onClick}
         >
             {text}
         </ButtonWrapper>

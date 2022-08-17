@@ -2,15 +2,17 @@ import React from "react";
 import { ProgressBarWrapper } from "./ProgressBar.style";
 
 interface ProgressBarProps {
-    pageNumber: number
+    currentPageNumber: number
+    pages: string[]
 }
 
 function ProgressBar({
-    pageNumber
+    currentPageNumber,
+    pages
 }: ProgressBarProps) {
     return (
         <ProgressBarWrapper>
-
+            
         </ProgressBarWrapper>
     )
 }
