@@ -23,6 +23,10 @@ function App() {
             />
           </div>
 
+          <div className="progressBarWrapper">
+            
+          </div>
+
           <div className="formWrapper">
             <form>
               <InputField

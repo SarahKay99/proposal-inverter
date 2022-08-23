@@ -23,7 +23,18 @@ export const NavbarWrapper = styled.div`
     }
 
     .rightSide {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding-right: 3.5em;
+
+        font-size: 12px;
+    }
+
+    .rightSide .firstRight {
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
     }
 
     a {
@@ -37,4 +48,15 @@ export const NavbarWrapper = styled.div`
         border-bottom: solid 3px;
         border-image: var(--brand-blue-ice-gradient) 1;
     }
+`
+
+export const ClaimAmount = styled.div`
+    color: var(--brand-medium-gray);
+    font-size: 13px;
+    padding: 10px;
+`
+
+export const Seperator = styled.div`
+    color: var(--brand-white-blend);
+    font-size: 16px;
 `
