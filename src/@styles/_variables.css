@@ -1,4 +1,5 @@
 :root {
+  /* COLORS */
     --brand-baby-blue: #BAEAFE;
     --brand-violet-light: #C56DF6;
     --brand-pink-pop: #FF01DD;
@@ -22,6 +23,7 @@
 
     --brand-indigo: #30425F;
     --brand-deep-dark-blue: #0E1728;
+    --brand-background-color: #1E293B;
     --brand-ms-blue: #3E557A;
     --brand-queen-blue: #4B6895;
     --brand-whale-blue: #5C7DAD;
@@ -36,5 +38,10 @@
     --brand-blue-ice-gradient: linear-gradient(269.78deg, #BBEBFF -48.62%, #0092FF 84.26%);
     --brand-purple-haze-gradient: linear-gradient(264.51deg, #8A2387 6.8%, #E94057 41.59%, #F27121 97.93%);
     --brand-peach-pop-gradient: linear-gradient(273.1deg, #FF02DE -13.99%, #F4846C 96.26%);
-    --brand-black-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    --brand-black-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); 
+
+    /* FONTS */
+    --font-volkorn: 'Vollkorn';
+    --font-volkorn-bold: 'Vollkorn Bold';
+    --font-inter: 'Inter';
   }

@@ -1,0 +1,18 @@
+{
+    "siteTitle": "Proposal Inverter",
+    "siteTagline": "INSERT PI TAGLINE HERE",
+    "siteUrl": "",
+    "siteImage": "/share.png",
+    "copyright": "All Rights Reserved. Powered by ",
+    "menu": [
+      {
+        "name": "Publish",
+        "link": "/publish/1"
+      },
+      {
+        "name": "Profile",
+        "link": "/profile"
+      }
+    ],
+    "announcement": ""
+  }

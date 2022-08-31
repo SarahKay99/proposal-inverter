@@ -13,7 +13,9 @@
     "noImplicitAny": true,
     "paths": {
       "@hooks/*": ["./src/@hooks/*"],
-      "@styles/*": ["./src/@styles*"]
+      "@styles/*": ["./src/@styles*"],
+      "@utils/*": ["./src/@utils/*"],
+      "@context/*": ["./src/@context/*"],
     },
     "baseUrl": ".",
     "strict": false,
