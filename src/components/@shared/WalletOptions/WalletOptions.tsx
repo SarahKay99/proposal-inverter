@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import { useConnectorPopup } from "../../../@context/connector";
+import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 import { accountTruncate } from "../../../@utils/web3";
 import { WalletOptionsWrapper } from "./WalletOptions.style";
+import MyWallet from "../MyWallet";
 
-interface WalletOptionsProps {
+function WalletOptions() {
+    const { address } = useAccount();
+    const { toggleWalletDropdown, showingWalletDropdown } = useConnectorPopup();
 
-}
-
-function WalletOptions({}: WalletOptionsProps) {
-    const [dropdownSelected, setDropdownSelected] = useState(false);
-
-    const toggleDropdown = (e: any) => {
-        e.preventDefault();
-        setDropdownSelected(!dropdownSelected);
-    }
+    useEffect(() => {
+        console.log(showingWalletDropdown)
+    }, [showingWalletDropdown])
 
     return <WalletOptionsWrapper>
-        <button className="walletDropdown" onClick={(e) => toggleDropdown(e)}>
-            {accountTruncate("0xc257274276a4e539741ca11b590b9447b26a8051")}
-            {dropdownSelected ? <img className="image" src="upward-arrow.png" /> : <img className="image" src="downward-arrow.png"/>}
+        <button className="walletDropdown" onClick={(e) => {
+            e.preventDefault();
+            toggleWalletDropdown(e);
+        }}>
+            {accountTruncate(address)}
+            {showingWalletDropdown ? 
+                <img className="image" src="upward-arrow.png" /> :
+                <img className="image" src="downward-arrow.png"/>
+            }
         </button>
+
+        {showingWalletDropdown && 
+            <MyWallet />
+        }
     </WalletOptionsWrapper>
 }
 

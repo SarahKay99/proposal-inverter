@@ -3,6 +3,8 @@ import Footer from '../Footer/Footer'
 import Navbar from 'src/components/@shared/NavBar/Navbar'
 import { Header } from './index.style'
 import Seo from './Seo'
+import { useConnectorPopup } from '../../../@context/connector'
+import MyWallet from '../MyWallet'
 
 export interface PageProps {
   children: ReactNode
@@ -22,7 +24,7 @@ export default function Page({
       <Seo title={title} description={description} uri={uri} />
       <Header>
         <Navbar />
-            {children}
+          {children}
         <Footer isHomePage={uri=="/"}/>
       </Header>
     </>

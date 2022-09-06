@@ -3,48 +3,66 @@ import ConnectWallet from "../ConnectWallet/ConnectWallet";
 import { ClaimAmount, NavbarWrapper, Seperator } from './Navbar.style';
 import Button from '../Button/Button';
 import WalletOptions from "../WalletOptions/WalletOptions";
+import { useAccount } from 'wagmi'
+import { useConnectorPopup } from "../../../@context/connector";
+import MyWallet from "../MyWallet";
 
 interface NavbarProps {
     
 }
 
 function Navbar({}: NavbarProps) {
+
+    const { isConnected } = useAccount();
+    const { toggleWagmiPopup } = useConnectorPopup(); 
+
     const claim = () => {
         console.log("Claimed tokens.");
     }
 
-    return <NavbarWrapper>
+    return <><NavbarWrapper>
         <div className="leftSide">
             LOGO
-            <a>Home</a>
             <a>Create</a>
             <a>Fund</a>
-            <a>My Activities</a>
+            <a onClick={(e) => {
+                if (!isConnected) toggleWagmiPopup(e)
+            }}>My Activities</a>
         </div>
 
         <div className="rightSide">
-            <>
-            <div className="firstRight">
-                <Button 
-                    text="Claim" 
-                    onClick={claim}
-                    color="none" 
-                    border="blueIce"
-                    height={40}
-                    sizeType="px"
-                    hover="blueIce"
-                />
-                <ClaimAmount>2.67 ETH</ClaimAmount>
-                <Seperator>|</Seperator>
-                <WalletOptions />
-            </div>
+            {isConnected && (
+                <div className="firstRight">
+                    <Button 
+                        text="Claim" 
+                        textColor="white"
+                        onClick={claim}
+                        color="none" 
+                        border="blueIce"
+                        height={40}
+                        sizeType="px"
+                        hover="blueIce"
+                    />
+                    <ClaimAmount>2.67 ETH</ClaimAmount>
+                    <Seperator>|</Seperator>
+                    <WalletOptions />
+                </div>
+            )}
+
+            {/* WHEN YOU GET BACK 
+                - Put the MyWallet popup in the right place and make sure the button doesnt disappear.
+                - Finish the MyWallet popup aesthetically
+                - Display errors properly on WalletConnectPopup.
+                - Create Blog
+                - Finish the Home Page appearence.
+            */}
+
             <ConnectWallet 
-                connected={true} 
-                connectedTo={"ethereum"}
+                connectedTo="ethereum"
             />
-            </>
         </div>
     </NavbarWrapper>
+    </>
 }
 
 export default Navbar;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const WalletOptionsWrapper = styled.div`
+    display: flex;
     width: 125px;
 
     .walletDropdown {

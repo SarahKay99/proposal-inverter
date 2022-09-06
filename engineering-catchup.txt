@@ -1,0 +1,10 @@
+Hi everyone,
+
+It's nice to see you all. This week we have things we can connect to the front-end.
+
+[HOME PAGE]
+- Proposals to Fund
+- Blogposts
+- Funding Partners 
+
+WAGMI Connectivity has been added to the front-end.

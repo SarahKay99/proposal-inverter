@@ -15,8 +15,8 @@ function InverterOffer({
     return (
         <InverterOfferWrapper>
             <img src={imgAddress} />
-            <h3>{title}</h3>
-            <h5>{subtitle}</h5>
+            <h3 className="title">{title}</h3>
+            <h5 className="subtitle">{subtitle}</h5>
         </InverterOfferWrapper>
     )
 }

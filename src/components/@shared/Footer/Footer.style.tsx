@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterWrapper = styled.div<{isHomePage?: boolean}>`
-    position: sticky;
+    position: relative;
     bottom: 0px;
     width: 100%;
     height: 6.5em;

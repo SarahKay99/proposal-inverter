@@ -1,17 +1,82 @@
 import React from "react"
+import Blogpost from "src/components/@shared/Blogpost/Blogpost"
 import Button from "src/components/@shared/Button/Button"
+import FundingPartners from "src/components/@shared/FundingPartners"
 import InverterOffer from "src/components/@shared/InverterOffers"
+import Proposal from "src/components/@shared/Proposal/Proposal"
 import { 
     HomePageWrapper, 
     HomePageTitle, 
     HomePageSubtitle, 
     CreateProposalButtons,
-    VisitApp,
     InverterOffers,
     GetFundedByTheBest,
     ProposalsToFund,
     ReadOurBlog
 } from "./index.style"
+
+const blogposts = [
+    {
+        title: "Proposal Inverter-The next stage in DAO2DAO Coordination",
+        date: "July 4th, 2022",
+        icon: "blogposts/shroom.png",
+        link: ""
+    },
+    {
+        title: "Proposal Inverter-The next stage in DAO2DAO Coordination",
+        date: "July 4th, 2022",
+        icon: "blogposts/splash.png",
+        link: ""
+    },
+    {
+        title: "Proposal Inverter-The next stage in DAO2DAO Coordination",
+        date: "July 4th, 2022",
+        icon: "blogposts/shroom.png",
+        link: ""
+    }
+]
+
+const proposals = [
+    {
+        proposalTitle: "The next Gitcoin Round",
+        proposalText: "We are GitcoinDAO and we want to fund GR 20 to continue funding public goods.  Lets fund the future of web3 together. Regen above Degen friends.",
+        status: 'New Proposal',
+        daoIcon: "",
+        daoName: "myDao"
+    },
+    {
+        proposalTitle: "The next Gitcoin Round",
+        proposalText: "We are GitcoinDAO and we want to fund GR 20 to continue funding public goods.  Lets fund the future of web3 together. Regen above Degen friends.",
+        status: 'New Proposal',
+        daoIcon: "",
+        daoName: "myDao"
+    },
+    {
+        proposalTitle: "The next Gitcoin Round",
+        proposalText: "We are GitcoinDAO and we want to fund GR 20 to continue funding public goods.  Lets fund the future of web3 together. Regen above Degen friends.",
+        status: 'New Proposal',
+        daoIcon: "",
+        daoName: ""
+    }
+]
+
+const fundingPartners = [
+    {
+        title: "Celo Foundation",
+        link: "",
+        icon: "fundingPartners/celo.png"
+    },
+    {
+        title: "LabDAO",
+        link: "",
+        icon: "fundingPartners/labDao.png"
+    },
+    {
+        title: "ETH Foundation",
+        link: "",
+        icon: "fundingPartners/ethFoundation.png"
+    }
+]
 
 export default function Home() {
     return (
@@ -48,7 +113,7 @@ export default function Home() {
                     text="Fund Proposals" 
                     color={"none"} 
                     hover={"none"}
-                    border={"default"}
+                    border={"blueIce"}
                     width={160}
                     height={40}
                     sizeType="px"
@@ -57,41 +122,41 @@ export default function Home() {
                 />
             </CreateProposalButtons>
 
-            <VisitApp>
-                <h3>Why Invert Your Proposals?</h3>
-                <Button 
-                    text="Visit App" 
-                    color="blueIce" 
-                    hover="blueIce"
-                    textColor="white"
-                    height={40}
-                    sizeType="px"
-                    onClick={(e: any) => {e.preventDefault()}}
-                />
-            </VisitApp>
-
             <InverterOffers>
                 <h1>Inverter Offers</h1>
-                <InverterOffer 
-                    title={"Streamed"} 
-                    subtitle={"little story about the title and more"} 
-                    imgAddress={""} 
-                />
-                <InverterOffer 
-                    title={"Focused"} 
-                    subtitle={"little story about the title and more"} 
-                    imgAddress={""} 
-                />
-                <InverterOffer 
-                    title={"Accountability"} 
-                    subtitle={"little story about the title and more"} 
-                    imgAddress={""} 
-                />
+                <div className="inverterOffersFlexBox">
+                    <InverterOffer 
+                        title={"Streamed"} 
+                        subtitle={"little story about the title and more"} 
+                        imgAddress={"streamed.png"} 
+                    />
+                    <InverterOffer 
+                        title={"Focused"} 
+                        subtitle={"little story about the title and more"} 
+                        imgAddress={"focused.png"} 
+                    />
+                    <InverterOffer 
+                        title={"Accountability"} 
+                        subtitle={"little story about the title and more"} 
+                        imgAddress={"accountability.png"} 
+                    />
+                </div>
             </InverterOffers>
 
             <GetFundedByTheBest>
                 <h4>OUR SUPPORTED FUNDING PARTNERS.</h4>
                 <h1>Get Funded By The Best</h1>
+
+                <div className="fundingPartnersFlexBox">
+                    {fundingPartners.map((fundingPartner: any) => {
+                        return <FundingPartners 
+                            icon={fundingPartner.icon}
+                            title={fundingPartner.title}
+                            websiteLink={fundingPartner.websiteLink}
+                        />
+                    })}
+                </div>
+
                 <Button 
                     text="Become A Funder" 
                     color="blueIce" 
@@ -105,7 +170,21 @@ export default function Home() {
             </GetFundedByTheBest>
 
             <ProposalsToFund>
-                <h3>Proposals In Need of Funding</h3>
+                <h4>SUPPORT YOUR FAVORITE PROJECTS</h4>
+                <h1>Fund Proposals</h1>
+
+                <div className="proposalsToFundFlexBox">
+                    {proposals.map((proposal: any) => {
+                        return <Proposal 
+                            proposalTitle={proposal.proposalTitle}
+                            proposalText={proposal.proposalText}
+                            status={proposal.status}
+                            daoIcon={proposal.daoIcon}
+                            daoName={proposal.daoName}
+                        />
+                    })}
+                </div>
+                
                 <Button 
                     text="View All Proposals" 
                     color="blueIce" 
@@ -116,12 +195,21 @@ export default function Home() {
                     sizeType="px"
                     onClick={(e: any) => {e.preventDefault()}}
                 />
-
-                
             </ProposalsToFund>
 
             <ReadOurBlog>
+                <h2>Read Our Blog</h2>
 
+                <div className="blogpostsFlexBox">
+                    {blogposts.map((blogpost: any) => {
+                        return <Blogpost 
+                            title={blogpost.title}
+                            date={blogpost.date}
+                            icon={blogpost.icon}
+                            link={blogpost.link}
+                        />
+                    })}
+                </div>
             </ReadOurBlog>
 
         </HomePageWrapper>

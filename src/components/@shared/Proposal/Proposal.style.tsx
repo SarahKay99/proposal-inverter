@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProposalCard = styled.div`
+export const ProposalCard = styled.div<{width?: number}>`
     background: var(--brand-black-gradient);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
@@ -8,6 +8,8 @@ export const ProposalCard = styled.div`
 
     text-align: -webkit-right;
     text-align: -moz-right;
+
+    width: ${(props: any) => props.width ? props.width : "12em"};
 `
 
 export const Status = styled.div<{status: String}>`
@@ -26,11 +28,15 @@ export const Status = styled.div<{status: String}>`
 export const TitleWrapper = styled.div`
     text-align: left;
     margin-bottom: 7px;
+
+    font-family: Inter;
 `
 
 export const TextWrapper = styled.div`
     text-align: left;
     margin-bottom: 15px;
+
+    font-size: 16px;
 `
 
 export const BottomBarWrapper = styled.div`

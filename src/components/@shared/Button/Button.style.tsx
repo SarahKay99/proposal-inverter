@@ -27,9 +27,9 @@ export const ButtonWrapper = styled.button<{
 
     width: ${(props: any) => props.width == 'default' ? '88px' : `${props.width}${props.sizeType}` };
     height: ${(props: any) => props.height == 'default' ? '48px' : `${props.height}${props.sizeType}` };
+    
     border: ${(props: any) => props.border == 'none' ? 'none' 
         : (props.border == 'default' || props.border == 'blueIce') && "solid 3px"};
-
     border-image: ${(props: any) => 
         props.border == 'blueIce' ? "var(--brand-blue-ice-gradient) 1"
         : props.border == 'default' ? "var(--brand-purple-haze-gradient) 1"

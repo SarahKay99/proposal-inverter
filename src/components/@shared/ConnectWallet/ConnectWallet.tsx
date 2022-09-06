@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { ConnectWalletWrapper, WalletConnectedWrapper } from './ConnectWallet.style';
+import { useConnect, useAccount } from 'wagmi';
+import WalletConnectPopup from "../WalletConnectPopup/WalletConnectPopup";
+import { useConnectorPopup } from "../../../@context/connector";
 
 const walletDropdownOptions = [
     "Ethereum",
@@ -11,14 +14,15 @@ const walletDropdownOptions = [
 ]
 
 interface ConnectWalletProps {
-    connected: boolean
     connectedTo: string
 }
 
 function ConnectWallet({
-    connected,
     connectedTo
 }: ConnectWalletProps) {
+    const { connect, connectors, error, isLoading, pendingConnector } = useConnect();
+    const { address, connector, isConnected } = useAccount();
+    const { toggleWagmiPopup } = useConnectorPopup();
 
     const [dropdownSelected, setDropdownSelected] = useState(false);
     const [dropdownSelectedOption, setDropdownSelectedOption] = useState<string>('');
@@ -34,7 +38,7 @@ function ConnectWallet({
         setDropdownSelected(!dropdownSelected);
     }
 
-    return connected ? (
+    return isConnected ? (
         <WalletConnectedWrapper
             connectedTo={connectedTo}
             dropdownSelected={dropdownSelected}
@@ -58,7 +62,7 @@ function ConnectWallet({
             )}
         </WalletConnectedWrapper>
     ) : (
-        <ConnectWalletWrapper>
+        <ConnectWalletWrapper onClick={(e) => toggleWagmiPopup(e)}>
             Connect Wallet
         </ConnectWalletWrapper>
     )

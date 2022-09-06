@@ -23,6 +23,7 @@ export const NavbarWrapper = styled.div`
     }
 
     .rightSide {
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -48,6 +49,10 @@ export const NavbarWrapper = styled.div`
         border-bottom: solid 3px;
         border-image: var(--brand-blue-ice-gradient) 1;
     }
+`
+
+export const Dropdown = styled.div`
+    
 `
 
 export const ClaimAmount = styled.div`

@@ -7,9 +7,9 @@ import {
     TextWrapper,
     BottomBarWrapper,
     DAOWrapper
-} from "./Card.style";
+} from "./Proposal.style";
 
-interface CardsProps {
+interface ProposalProps {
     proposalTitle: string;
     proposalText: string;
     status: 'New Proposal' | 'Needs Contributors' | 'Inactive' | 'Needs Funding';
@@ -17,13 +17,13 @@ interface CardsProps {
     daoIcon?: any;
 }
 
-function Card({
+function Proposal({
     proposalTitle,
     proposalText,
     status,
     daoIcon,
     daoName
-}: CardsProps) {
+}: ProposalProps) {
     return (
         <ProposalCard>
             <Status className={"StatusText"} status={status}>{status}</Status>
@@ -39,10 +39,12 @@ function Card({
                     onClick={() => {}}
                     rounding={"round"}
                     color={"blueIce"}
+                    hover={"blueIce"}
+                    textColor={"white"}
                 />
             </BottomBarWrapper>
         </ProposalCard>
     )
 }
 
-export default Card;
+export default Proposal;

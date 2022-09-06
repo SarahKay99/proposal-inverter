@@ -16,6 +16,7 @@
       "@styles/*": ["./src/@styles*"],
       "@utils/*": ["./src/@utils/*"],
       "@context/*": ["./src/@context/*"],
+      "@configs/*": ["./src/@configs/*"]
     },
     "baseUrl": ".",
     "strict": false,

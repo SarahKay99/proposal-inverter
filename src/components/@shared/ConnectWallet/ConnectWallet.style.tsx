@@ -81,7 +81,7 @@ export const WalletConnectedWrapper = styled.div<{connectedTo: string, dropdownS
 
 export const ConnectWalletWrapper = styled.button`
     width: 150px;
-    height: 30px;
+    height: 40px;
     background: none;
     border-radius: 10px;
     border: solid 3px;
