@@ -25,6 +25,16 @@ export default function Home() {
 
             <CreateProposalButtons>
                 <Button 
+                    text="Become a Funding Partner" 
+                    color={"blueIce"} 
+                    hover={"blueIce"}
+                    width={200}
+                    height={40}
+                    sizeType="px"
+                    onClick={(e: any) => {e.preventDefault()}}
+                    textColor={'white'}
+                />
+                <Button 
                     text="Create a Proposal" 
                     color={"blueIce"} 
                     hover={"blueIce"}
@@ -34,7 +44,17 @@ export default function Home() {
                     onClick={(e: any) => {e.preventDefault()}}
                     textColor={'white'}
                 />
-                <a>Fund Proposals</a>
+                <Button 
+                    text="Fund Proposals" 
+                    color={"none"} 
+                    hover={"none"}
+                    border={"default"}
+                    width={160}
+                    height={40}
+                    sizeType="px"
+                    onClick={(e: any) => {e.preventDefault()}}
+                    textColor={'white'}
+                />
             </CreateProposalButtons>
 
             <VisitApp>
@@ -96,6 +116,8 @@ export default function Home() {
                     sizeType="px"
                     onClick={(e: any) => {e.preventDefault()}}
                 />
+
+                
             </ProposalsToFund>
 
             <ReadOurBlog>
