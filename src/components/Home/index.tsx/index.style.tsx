@@ -9,7 +9,7 @@ export const HomePageTitle = styled.div`
     margin-right: 8%;
 
     text-align: left;
-    font-family: 'Vollkorn Bold';
+    font-family: Vollkorn;
     font-size: calc(100px + 2vmin);
     font-weight: 900;
     width: 70%;

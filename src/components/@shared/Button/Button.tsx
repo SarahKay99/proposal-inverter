@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonWrapper } from "./Button.style";
 
-interface ButtonProps {
+export type ButtonProps = {
     text: String
     onClick: any
     rounding?: 'default' | 'round' | number
@@ -13,6 +13,7 @@ interface ButtonProps {
     hover?: 'default' | 'blueIce' | 'none'
     textColor?: 'default' | 'white'
     fontWeight?: 'default' | number
+    margin?: string
 }
 
 function Button({
@@ -26,7 +27,8 @@ function Button({
     sizeType='em',
     hover='none',
     textColor='default',
-    fontWeight='default'
+    fontWeight='default',
+    margin='default'
 }: ButtonProps) {
     return (
         <ButtonWrapper 
@@ -41,6 +43,7 @@ function Button({
             textColor={textColor}
             fontWeight={fontWeight}
             onClick={onClick}
+            margin={margin}
         >
             {text}
         </ButtonWrapper>

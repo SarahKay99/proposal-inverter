@@ -6,6 +6,15 @@ export interface SiteContent {
 
 }
 
+export interface Milestone {
+    title: string
+    deliverables: string[]
+    startDate: string
+    endDate: string
+    fundingAmount: number
+    fundingCurrency: string
+}
+
 export interface ConnectorPopupProviderValue {
     showingWagmiPopup: boolean
     showingWalletDropdown: boolean

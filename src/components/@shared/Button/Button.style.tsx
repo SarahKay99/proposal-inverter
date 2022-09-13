@@ -10,8 +10,10 @@ export const ButtonWrapper = styled.button<{
     sizeType: 'em' | 'px',
     hover: 'default' | 'blueIce' | 'none',
     textColor: 'default' | 'white',
-    fontWeight: 'default' | number
+    fontWeight: 'default' | number,
+    margin: string
 }>`
+    margin: ${(props: any) => props.margin == 'default' ? "0vw 0vw 0vw 0vw" : props.margin};
     font-weight: ${(props: any) => props.fontWeight == 'default' ? 700 : props.fontWeight};
     color: ${(props: any) => props.textColor == 'default' ? 'black' : 'white'};
     background: ${(props: any) => 

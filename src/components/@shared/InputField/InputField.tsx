@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { 
-    LabelWrapper, 
+    InputFieldWrapper, 
     LabelNameWrapper,
     InputWrapper, 
     QuestionMarkIcon, 
@@ -10,18 +10,30 @@ import {
     DropdownFieldWrapper
 } from './InputField.style';
 import YesNoButton from "../YesNoButton/YesNoButton";
+import Button, { ButtonProps } from "../Button/Button";
 
 interface TextInputProps {
-    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo'
-    labelName: string
+    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button'
+    labelName?: string
     placeholder?: string
 
     dropdownOptions?: string[]
+    dropdownType?: 'singleOption' | 'multipleOptions'
+    dropdownStyle?: 'plain' | 'checkbox'
+
     helperText?: string
     questionMarkText?: string
 
     charLimit?: number
     color?: "default" | "blueIce"
+
+    buttonProps?: ButtonProps
+    fieldWidth?: number | "default",
+    fieldHeight?: number | "default",
+
+    height?: number | "default"
+    width?: number | "default"
+    margin?: string
 }
 
 function TextInputField({
@@ -30,11 +42,22 @@ function TextInputField({
     placeholder,
 
     dropdownOptions,
+    dropdownType='singleOption',
+    dropdownStyle='plain',
+
     helperText='',
     questionMarkText,
 
     charLimit,
-    color="default"
+    color="default",
+    buttonProps,
+
+    fieldHeight='default', 
+    fieldWidth='default',
+
+    height='default',
+    width='default',
+    margin='default'
 }: TextInputProps) {
 
     const [numberOfCharacters, setNumberOfCharacters] = useState<number>(0);
@@ -63,30 +86,38 @@ function TextInputField({
         setDropdownSelected(!dropdownSelected);
     }
 
-    return <LabelWrapper>
-        <div className={"topLine"}>
-            <div className={"flexBox"}>
-                <LabelNameWrapper>{labelName}</LabelNameWrapper>
-                
-                {/* Info about the box: directly beside the label */}
-                {questionMarkText && (
-                    <QuestionMarkIcon>
-                        <img src={"question-mark.png"} />
-                        <div className="infoBubble">{questionMarkText}</div>
-                    </QuestionMarkIcon>
+    return <InputFieldWrapper margin={margin} height={height} width={width}>
+        {labelName && (
+            <div className={"topLine"}>
+                <div className={"flexBox"}>
+                    <LabelNameWrapper>{labelName}</LabelNameWrapper>
+                    
+                    {/* Info about the box: directly beside the label */}
+                    {questionMarkText && (
+                        <QuestionMarkIcon>
+                            <img src={"question-mark.png"} />
+                            <div className="infoBubble">{questionMarkText}</div>
+                        </QuestionMarkIcon>
+                    )}
+                </div>
+
+
+                {/* Character limit: On the Far Right */}
+                {charLimit && (
+                    <CharLimitWrapper tooManyChars={numberOfCharacters > charLimit}>
+                        {numberOfCharacters} / {charLimit}
+                    </CharLimitWrapper>
                 )}
             </div>
+        )}
 
-
-            {/* Character limit: On the Far Right */}
-            {charLimit && (
-                <CharLimitWrapper tooManyChars={numberOfCharacters > charLimit}>
-                    {numberOfCharacters} / {charLimit}
-                </CharLimitWrapper>
-            )}
-        </div>
-
-        <InputWrapper state={errorState}>
+        <InputWrapper 
+            state={errorState}
+            fieldHeight={fieldHeight}
+            fieldWidth={fieldWidth}
+            buttonWidth={buttonProps?.width}
+            buttonHeight={buttonProps?.height}
+        >
             {inputType == 'label' ? (
                 <input
                     type="text"
@@ -127,9 +158,23 @@ function TextInputField({
                         </ul>
                     )}
                 </DropdownFieldWrapper>
-            ) : inputType == 'yesNo' && (
+            ) : inputType == 'yesNo' ? (
                 <YesNoButton 
                     color={color}
+                />
+            ) : inputType == 'button' && (
+                <Button 
+                    text={buttonProps?.text}
+                    onClick={buttonProps?.onClick}
+                    rounding={buttonProps?.rounding}
+                    color={buttonProps?.color}
+                    border={buttonProps?.border}
+                    width={buttonProps?.width}
+                    height={buttonProps?.height}
+                    sizeType={buttonProps?.sizeType}
+                    hover={buttonProps?.hover}
+                    textColor={buttonProps?.textColor}
+                    fontWeight={buttonProps?.fontWeight}
                 />
             )}
 
@@ -147,7 +192,7 @@ function TextInputField({
             </>}
         </HelperTextWrapper>
 
-    </LabelWrapper>
+    </InputFieldWrapper>
 }
 
 export default TextInputField;

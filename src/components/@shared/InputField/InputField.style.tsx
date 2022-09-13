@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-export const LabelWrapper = styled.div`
+export const InputFieldWrapper = styled.div<{
+  margin?: string,
+  width?: number | 'default',
+  height?: number | 'default',
+}>`
+
+  margin: ${(props: any) => props.margin == 'default' || undefined ? "0px 0px 0px 0px" : props.margin};
+  width: ${(props: any) => props.width == 'default' || undefined ? "" : `${props.width}em`}
+  height: ${(props: any) => props.height == 'default' || undefined ? "" : `${props.height}em`}
+
   .topLine {
     display: flex;
     align-items: center;
@@ -21,14 +30,20 @@ export const LabelNameWrapper = styled.div`
   color: var(--brand-baby-blue);
 `
 
-export const InputWrapper = styled.div<{state: 'normal' | 'error' | 'warning'}>`
+export const InputWrapper = styled.div<{
+  state: 'normal' | 'error' | 'warning', 
+  fieldHeight?: number | 'default',
+  fieldWidth?: number | 'default',
+  buttonHeight?: number | 'default',
+  buttonWidth?: number | 'default'
+}>`
   text-align: left;
 
   input[type=text] {
     border-radius: 10px;
     padding-left: 12px;
-    width: 23em;
-    height: 2.8em;
+    width: ${(props) => props.fieldWidth == 'default' || undefined ? "23em" : `${props.fieldWidth}em`};
+    height: ${(props) => props.fieldHeight == 'default' || undefined ? "2.8em" : `${props.fieldHeight}em`};
     border: ${(props) => props.state == 'normal' ? 'solid var(--background-color) 2px;'
       : props.state == 'warning' ? 'solid var(--brand-alert-orange-warning) 2px;'
       : props.state == 'error' && 'solid var(--brand-alert-red-error) 2px;'
@@ -51,16 +66,16 @@ export const InputWrapper = styled.div<{state: 'normal' | 'error' | 'warning'}>`
     border-radius: 5px;
     padding-left: 12px;
     padding-right: 12px;
-    width: 23em;
-    height: 2.8em;
+    width: ${(props) => props.buttonWidth == 'default' ? "23em" : `${props.buttonWidth}em`};
+    height: ${(props) => props.buttonHeight == 'default' ? "2.8em" : `${props.buttonHeight}em`};
   }
 
   textarea {
     border-radius: 7px;
     padding-left: 12px;
     padding-top: 12px;
-    width: 23em;
-    height: 5.8em;
+    width: ${(props) => props.fieldWidth == 'default' || undefined ? "23em" : `${props.fieldWidth}em`};
+    height: ${(props) => props.fieldHeight == 'default' || undefined ? "5.8em" : `${props.fieldHeight}em`};
   }
 `
 
