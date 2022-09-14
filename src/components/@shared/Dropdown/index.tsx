@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Button from "../Button/Button"
-import { DropdownFieldWrapper, FakeCheckbox } from './index.style'
+import { DropdownFieldWrapper } from './index.style'
 
 interface DropdownProps {
     dropdownSelected: boolean
@@ -62,9 +62,12 @@ function Dropdown({
                                 {/* readonly checkbox. */}
                                 {/* We need to create an overlay to show the blue color of the checkbox. */}
                                 {dropdownType == 'multipleOptions' && (
-                                    <FakeCheckbox checked={dropdownSelectedOptions.includes(option)}>
-                                        <img src="tick.svg"/>
-                                    </FakeCheckbox>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={dropdownSelectedOptions.includes(option)}
+                                        onChange={(e) => {console.log(e)}}
+                                        disabled
+                                    />
                                 )}
                                 {option}
                             </button>

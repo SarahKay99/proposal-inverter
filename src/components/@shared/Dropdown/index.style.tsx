@@ -100,7 +100,3 @@ export const DropdownFieldWrapper = styled.div<{
     cursor: pointer;
   }
 `
-
-export const FakeCheckbox = styled.div<{checked: boolean}>`
-  background-color: ${(props: any) => props.checked ? "var(--brand-ocean-blue)" : "var(--brand-white-blend}"};
-`
