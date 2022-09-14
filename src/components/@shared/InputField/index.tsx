@@ -86,19 +86,15 @@ function TextInputField({
     }
 
     const selectOption = (e: any, option: string) => {
-        console.log(`OPTION = ${option}`);
         e.preventDefault();
         if (dropdownType == 'singleOption') {
             setDropdownSelectedOption(option);
             setDropdownSelected(!dropdownSelected);
         } else {
-            const options: string[] = dropdownSelectedOptions;
             if (dropdownSelectedOptions.includes(option)) {
-                var cuttedOptions = options.filter(e => e !== option);
-                setDropdownSelectedOptions(cuttedOptions);
+                setDropdownSelectedOptions(existing => existing.filter(item => item !== option));
             } else {
-                options.push(option);
-                setDropdownSelectedOptions(options);
+                setDropdownSelectedOptions(existing => [...existing, option]);
             }
         }
     }

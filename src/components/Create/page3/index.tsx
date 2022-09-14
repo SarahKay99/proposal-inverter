@@ -16,6 +16,9 @@ import InputField from "src/components/@shared/InputField";
 import Label from "src/components/@shared/Label";
 import Button from "src/components/@shared/Button/Button";
 
+// TODO:
+// Change direct state mutations on page 2 and 3.
+
 export default function Page3() {
 
     const [milestones, setMilestones] = useState<Milestone[]>();
@@ -26,9 +29,7 @@ export default function Page3() {
     }
 
     const addNewDeliverable = (e: any) => {
-        var newDeliverables = deliverables;
-        newDeliverables.push("")
-        setDeliverables(newDeliverables)
+        setDeliverables(existing => [...existing, ""])
     }
 
     useEffect(() => {

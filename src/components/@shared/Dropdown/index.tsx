@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Button from "../Button/Button"
-import { DropdownFieldWrapper } from './index.style'
+import { DropdownFieldWrapper, FakeCheckbox } from './index.style'
 
 interface DropdownProps {
     dropdownSelected: boolean
@@ -34,10 +34,20 @@ function Dropdown({
             onClick={(e) => toggleDropdown(e)}
         >
             <>
-            {(dropdownSelectedOption == undefined || dropdownSelectedOption == '') ? (
+            {(dropdownSelectedOption == undefined || (dropdownSelectedOption == '' && (dropdownSelectedOptions.length == 0 || dropdownSelectedOptions == undefined))) ? (
                 <>{placeholder}</>
-            ) : (
+            ) : dropdownSelectedOption != '' ? (
                 <>{dropdownSelectedOption}</>
+            ) : (dropdownSelectedOptions.length != 0) && (
+                <>
+                {dropdownSelectedOptions.map((option: string, idx: any) => {
+                    return (
+                        <>
+                            {(idx == dropdownSelectedOptions.length - 1) ? `${option}` : `${option}, `}
+                        </>
+                    )
+                })}
+                </>
             )}
             <img src={dropdownSelected ? "dropdown-arrow-up.png" : "dropdown-arrow-down.png"}/>
             </>
@@ -48,13 +58,13 @@ function Dropdown({
                 <ul>
                     {dropdownOptions.map((option: any) => {
                         return <li key={option} value={option}>
-                            <button onClick={(e) => selectOption(e, option)}>
+                            <button key={option} onClick={(e) => selectOption(e, option)}>
+                                {/* readonly checkbox. */}
+                                {/* We need to create an overlay to show the blue color of the checkbox. */}
                                 {dropdownType == 'multipleOptions' && (
-                                    <input 
-                                        type="checkbox" 
-                                        checked={dropdownSelectedOptions.includes(option)}
-                                        onChange={(e) => {console.log(e)}}
-                                    />
+                                    <FakeCheckbox checked={dropdownSelectedOptions.includes(option)}>
+                                        <img src="tick.svg"/>
+                                    </FakeCheckbox>
                                 )}
                                 {option}
                             </button>
