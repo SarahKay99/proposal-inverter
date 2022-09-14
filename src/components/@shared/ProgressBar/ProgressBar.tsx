@@ -18,8 +18,8 @@ function ProgressBar({
     return (
         <ProgressBarWrapper>
             {pages.map((page: ProgressPage, idx: number) => {
-                return <>
-                    <ProgressBarItem>
+                return (<>
+                    <ProgressBarItem key={page.progressName}>
                         <ProgressBarNumber activePage={page.pageNumbers.includes(currentPageNumber)}>
                             {(currentPageNumber > Math.max.apply(0, page.pageNumbers) || currentPageNumber == 0) ? 
                                 <img src="tick.svg"/>
@@ -28,9 +28,11 @@ function ProgressBar({
                         <ProgressBarText activePage={currentPageNumber == idx + 1}>
                             {page.progressName}
                         </ProgressBarText>
+                        
                     </ProgressBarItem>
                     {idx + 1 < pages.length && <hr />}
-                </>
+                    </>
+                )
             })}
         </ProgressBarWrapper>
     )

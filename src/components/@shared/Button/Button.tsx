@@ -11,9 +11,10 @@ export type ButtonProps = {
     height?: 'default' | number
     sizeType?: 'em' | 'px'
     hover?: 'default' | 'blueIce' | 'none'
-    textColor?: 'default' | 'white'
+    textColor?: 'default' | 'white' | 'blue'
     fontWeight?: 'default' | number
     margin?: string
+    props?: any
 }
 
 function Button({
@@ -28,7 +29,8 @@ function Button({
     hover='none',
     textColor='default',
     fontWeight='default',
-    margin='default'
+    margin='default',
+    props
 }: ButtonProps) {
     return (
         <ButtonWrapper 
@@ -42,7 +44,7 @@ function Button({
             hover={hover}
             textColor={textColor}
             fontWeight={fontWeight}
-            onClick={onClick}
+            onClick={(e) => { props ? onClick(e, props) : onClick(e) }}
             margin={margin}
         >
             {text}

@@ -4,6 +4,14 @@ export const Page1Specs = styled.div`
     .flexBox {
         display: flex;
     }
+
+    .form {
+        display: flex;
+    }
+
+    .widthControl {
+        width: 45vw;
+    }
 `
 
 export const ProposalLeading = styled.div`
@@ -12,7 +20,11 @@ export const ProposalLeading = styled.div`
     .secondColumn {
         display: flex;
         flex-direction: column;
-        margin-right: 2em;
+        width: 40vw;
+    }
+
+    .thirdColumn {
+        width: 100%;
     }
 `
 
@@ -23,6 +35,22 @@ export const ProposalAbout = styled.div`
     .addExternalMedia {
         display: flex;
         align-items: flex-end;
+    }
+
+    .removeMedia {
+        position: relative;
+        bottom: 35px;
+
+        height: 10px;
+        width: 10px;
+
+        border-radius: 50%;
+        border: none;
+        background-color: red;
+    }
+
+    .removeMedia:hover {
+        cursor: pointer;
     }
 
     a {

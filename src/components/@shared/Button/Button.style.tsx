@@ -9,13 +9,15 @@ export const ButtonWrapper = styled.button<{
     height: 'default' | number,
     sizeType: 'em' | 'px',
     hover: 'default' | 'blueIce' | 'none',
-    textColor: 'default' | 'white',
+    textColor: 'default' | 'white' | 'blue',
     fontWeight: 'default' | number,
     margin: string
 }>`
     margin: ${(props: any) => props.margin == 'default' ? "0vw 0vw 0vw 0vw" : props.margin};
     font-weight: ${(props: any) => props.fontWeight == 'default' ? 700 : props.fontWeight};
-    color: ${(props: any) => props.textColor == 'default' ? 'black' : 'white'};
+    color: ${(props: any) => props.textColor == 'default' ? 'black' 
+        : props.textColor == 'white' ? 'white'
+        : props.textColor == 'blue' && 'var(--brand-ocean-blue)'};
     background: ${(props: any) => 
         props.color == 'default' ? 'var(--brand-purple-haze-gradient)'
         : props.color == 'blueIce' ? 'var(--brand-blue-ice-gradient)'

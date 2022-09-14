@@ -33,6 +33,7 @@ export const TextLine = styled.div`
     .days {
         font-size: 10px;
         margin-left: 5px;
+        color: #94A3B8;
     }
 
     h3 {

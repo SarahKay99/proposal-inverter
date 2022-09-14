@@ -3,7 +3,7 @@ import { Milestone } from "@context/_types";
 import { MilestoneWrapper } from "./index.style";
 
 
-interface MilestoneProps {
+export interface MilestoneProps {
     milestone: Milestone
 }
 

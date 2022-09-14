@@ -12,7 +12,12 @@ export const Page3Fonts = styled.div`
 `
 
 export const MilestoneHeading = styled.div`
-
+    .pageSubtext {
+        color: #94A3B8;
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 16px;
+    }
 `
 
 export const AddAMilestone = styled.div`

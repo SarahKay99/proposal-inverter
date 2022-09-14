@@ -2,24 +2,30 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { 
     InputFieldWrapper, 
-    LabelNameWrapper,
-    InputWrapper, 
-    QuestionMarkIcon, 
-    CharLimitWrapper,
+    InputWrapper,
     HelperTextWrapper,
-    DropdownFieldWrapper
-} from './InputField.style';
+} from './index.style';
 import YesNoButton from "../YesNoButton/YesNoButton";
 import Button, { ButtonProps } from "../Button/Button";
+import Label from "../Label";
+import Dropdown from "../Dropdown";
+import CoinAmountInput from "../CoinAmountInput";
+import DateMonthYear from "../DateMonthYear";
 
 interface TextInputProps {
-    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button'
+    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button' | 'coinAmount' | 'dateMonthYear'
     labelName?: string
     placeholder?: string
+    subtext?: string
 
     dropdownOptions?: string[]
     dropdownType?: 'singleOption' | 'multipleOptions'
     dropdownStyle?: 'plain' | 'checkbox'
+    maxOptionsSelected?: number;
+
+    defaultCoin?: string
+
+    showUseCurrentDate?: boolean
 
     helperText?: string
     questionMarkText?: string
@@ -40,10 +46,16 @@ function TextInputField({
     inputType,
     labelName,
     placeholder,
+    subtext,
 
     dropdownOptions,
     dropdownType='singleOption',
     dropdownStyle='plain',
+    maxOptionsSelected,
+
+    defaultCoin,
+    
+    showUseCurrentDate,
 
     helperText='',
     questionMarkText,
@@ -60,12 +72,40 @@ function TextInputField({
     margin='default'
 }: TextInputProps) {
 
+    // dropdown
+    const [dropdownSelected, setDropdownSelected] = useState<boolean>();
+    const [dropdownSelectedOption, setDropdownSelectedOption] = useState<string>('');
+    const [dropdownSelectedOptions, setDropdownSelectedOptions] = useState<string[]>([]);
+
     const [numberOfCharacters, setNumberOfCharacters] = useState<number>(0);
     const [errorState, setErrorState] = useState<'normal' | 'error' | 'warning'>('normal');
     
-    // Dropdown Only
-    const [dropdownSelected, setDropdownSelected] = useState(false);
-    const [dropdownSelectedOption, setDropdownSelectedOption] = useState<string>('');
+    const toggleDropdown = (e: any) => {
+        e.preventDefault();
+        setDropdownSelected(!dropdownSelected);
+    }
+
+    const selectOption = (e: any, option: string) => {
+        console.log(`OPTION = ${option}`);
+        e.preventDefault();
+        if (dropdownType == 'singleOption') {
+            setDropdownSelectedOption(option);
+            setDropdownSelected(!dropdownSelected);
+        } else {
+            const options: string[] = dropdownSelectedOptions;
+            if (dropdownSelectedOptions.includes(option)) {
+                var cuttedOptions = options.filter(e => e !== option);
+                setDropdownSelectedOptions(cuttedOptions);
+            } else {
+                options.push(option);
+                setDropdownSelectedOptions(options);
+            }
+        }
+    }
+
+    const addOptionOfficially = (e: any) => {
+
+    }
 
     const countCharacters = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setNumberOfCharacters(e.target.value.length);
@@ -75,40 +115,15 @@ function TextInputField({
         }
     }
 
-    const toggleDropdown = (e: any) => {
-        e.preventDefault();
-        setDropdownSelected(!dropdownSelected);
-    }
-    
-    const selectOption = (e: any, option: string) => {
-        e.preventDefault();
-        setDropdownSelectedOption(option);
-        setDropdownSelected(!dropdownSelected);
-    }
-
     return <InputFieldWrapper margin={margin} height={height} width={width}>
         {labelName && (
-            <div className={"topLine"}>
-                <div className={"flexBox"}>
-                    <LabelNameWrapper>{labelName}</LabelNameWrapper>
-                    
-                    {/* Info about the box: directly beside the label */}
-                    {questionMarkText && (
-                        <QuestionMarkIcon>
-                            <img src={"question-mark.png"} />
-                            <div className="infoBubble">{questionMarkText}</div>
-                        </QuestionMarkIcon>
-                    )}
-                </div>
-
-
-                {/* Character limit: On the Far Right */}
-                {charLimit && (
-                    <CharLimitWrapper tooManyChars={numberOfCharacters > charLimit}>
-                        {numberOfCharacters} / {charLimit}
-                    </CharLimitWrapper>
-                )}
-            </div>
+            <Label 
+                labelName={labelName}
+                numberOfCharacters={numberOfCharacters}
+                questionMarkText={questionMarkText}
+                charLimit={charLimit}
+                subtext={subtext}
+            />
         )}
 
         <InputWrapper 
@@ -131,38 +146,23 @@ function TextInputField({
                 />
             ) : inputType == 'dropdown' ? (
                 // since the <option> element cannot be styled in Chrome, we've made our own custom dropdown.
-                <DropdownFieldWrapper selected={dropdownSelected}>
-                    <button 
-                        className="selectButton"
-                        onClick={(e) => toggleDropdown(e)}
-                    >
-                        <>
-                        {(dropdownSelectedOption == undefined || dropdownSelectedOption == '') ? (
-                            <>{placeholder}</>
-                        ) : (
-                            <>{dropdownSelectedOption}</>
-                        )}
-                        <img src={dropdownSelected ? "dropdown-arrow-up.png" : "dropdown-arrow-down.png"}/>
-                        </>
-                    </button>
-
-                    {dropdownOptions != undefined && (
-                        <ul>
-                            {dropdownOptions.map((option: any) => {
-                                return <li key={option} value={option}>
-                                    <button 
-                                        onClick={(e) => selectOption(e, option)
-                                    }>{option}</button>
-                                </li>
-                            })}
-                        </ul>
-                    )}
-                </DropdownFieldWrapper>
+                <Dropdown 
+                    dropdownSelected={dropdownSelected}
+                    placeholder={placeholder}
+                    dropdownType={dropdownType}
+                    dropdownOptions={dropdownOptions}
+                    dropdownSelectedOption={dropdownSelectedOption}
+                    dropdownSelectedOptions={dropdownSelectedOptions}
+                    toggleDropdown={toggleDropdown}
+                    selectOption={selectOption}
+                    addOptionOfficially={addOptionOfficially}
+                    width={width}
+                />
             ) : inputType == 'yesNo' ? (
                 <YesNoButton 
                     color={color}
                 />
-            ) : inputType == 'button' && (
+            ) : inputType == 'button' ? (
                 <Button 
                     text={buttonProps?.text}
                     onClick={buttonProps?.onClick}
@@ -176,6 +176,13 @@ function TextInputField({
                     textColor={buttonProps?.textColor}
                     fontWeight={buttonProps?.fontWeight}
                 />
+            ) : inputType == 'coinAmount' ? (
+                <CoinAmountInput
+                    placeholder={placeholder}
+                    defaultCoin={defaultCoin}
+                />
+            ) : inputType == 'dateMonthYear' && (
+                <DateMonthYear showUseCurrentDate={showUseCurrentDate} />
             )}
 
         </InputWrapper>
@@ -190,6 +197,16 @@ function TextInputField({
                     <span>{helperText}</span>
                 </>}
             </>}
+
+            {(dropdownType == "singleOption") ? <>{helperText}</> 
+            : (dropdownType == "multipleOptions" && <>
+                {dropdownSelectedOptions.length > maxOptionsSelected ? <>
+                    <span className={"errorText"}>You have selected too many options. Please select a maximum of {maxOptionsSelected}.</span>
+                </> : <>
+                    <span>{helperText}</span>
+                </>} 
+            </>)
+            }
         </HelperTextWrapper>
 
     </InputFieldWrapper>
