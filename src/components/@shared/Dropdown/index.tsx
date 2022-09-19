@@ -9,6 +9,7 @@ interface DropdownProps {
     dropdownOptions: string[] 
     dropdownSelectedOption: string
     dropdownSelectedOptions: string[]
+    backgroundColorDropdown: 'light' | 'dark'
     toggleDropdown: (e: any) => void
     selectOption: (e: any, option: string) => void
     addOptionOfficially: (e: any) => void
@@ -22,13 +23,14 @@ function Dropdown({
     dropdownOptions,
     dropdownSelectedOption,
     dropdownSelectedOptions,
+    backgroundColorDropdown,
     toggleDropdown,
     selectOption,
     addOptionOfficially,
     width='default'
 }: DropdownProps) {
 
-    return <DropdownFieldWrapper selected={dropdownSelected} width={width}>
+    return <DropdownFieldWrapper selected={dropdownSelected} width={width} backgroundColorDropdown={backgroundColorDropdown}>
         <button 
             className="selectButton"
             onClick={(e) => toggleDropdown(e)}
@@ -77,21 +79,23 @@ function Dropdown({
                 <hr />
                 {dropdownType == 'multipleOptions' && 
                     <div className="buttons">
-                        <Button
+                        <Button 
                             text="Cancel"
                             onClick={toggleDropdown}
                             color="none"
+                            hover="blueIce"
                             textColor="blue"
-                            height={35}
-                            sizeType={"px"}
+                            width={6}
+                            sizeType={"em"}
                         />
                         <Button 
                             text="Add"
                             onClick={addOptionOfficially}
                             color="blueIce"
+                            hover="blueIce"
                             textColor="white"
-                            height={35}
-                            sizeType={"px"}
+                            width={6}
+                            sizeType={"em"}
                         />
                     </div>
                 }
