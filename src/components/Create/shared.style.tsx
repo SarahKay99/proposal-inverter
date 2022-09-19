@@ -43,3 +43,33 @@ export const TextLine = styled.div`
         font-weight: 600;
     }
 `
+
+export const Page4Specs = styled.div`
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-family: Inter;
+        font-size: 18px;
+        width: 60vw
+    }
+`
+
+export const BottomText = styled.div<{headerColor?: 'default' | 'pumpkin'}>`
+    text-align: center; 
+
+    h3 {
+        color: ${(props: any) => 
+            (props.headerColor == 'default' || props.headerColor == undefined) 
+        ? 'var(--brand-white-blend)' : 'var(--brand-pumpkin) !important'};
+    }
+
+    margin: 20px 0px 30px 0px;
+`

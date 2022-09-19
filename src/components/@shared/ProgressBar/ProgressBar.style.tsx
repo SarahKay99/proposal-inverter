@@ -15,12 +15,19 @@ export const ProgressBarWrapper = styled.div`
     }
 `
 
-export const ProgressBarNumber = styled.div<{activePage: boolean}>`
-    color: var(--brand-background-color);
+export const ProgressBarNumber = styled.button<{activePage: boolean}>`
+    :hover {
+        cursor: pointer;
+        background: var(--brand-baby-blue);
+        box-shadow: 0px 0px 10px #45B3FF;
+    }
+    
+    background: var(--brand-background-color);
     font-weight: 700;
+    border: none;
 
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background: ${(props: any) => props.activePage ? "var(--brand-baby-blue)" : "#979797"}
 `

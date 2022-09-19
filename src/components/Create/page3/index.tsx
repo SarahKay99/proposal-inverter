@@ -4,24 +4,47 @@ import RoadmapSummary from "../../@shared/RoadmapSummary";
 import { 
     Page3Fonts,
     MilestoneHeading,
-    AddedMilestones,
 } from "../index.style"
-import { AddMilestoneFormWrapper, NoMilestoneYet } from "./index.style"
+import { AddMilestoneFormWrapper, AddedMilestones, NoMilestoneYet } from "./index.style"
 import { 
-    PageWrapper, 
+    PageWrapper,
     TextSummary,
-    TextLine 
+    TextLine
 } from '../shared.style'
 import InputField from "src/components/@shared/InputField";
 import Label from "src/components/@shared/Label";
 import Button from "src/components/@shared/Button/Button";
+import MilestoneDisplay from "src/components/@shared/MilestoneDisplay";
 
-// TODO:
-// Change direct state mutations on page 2 and 3.
+const milestonesPlaceholder = [
+    {
+        title: "Milestone 1",
+        deliverables: [
+            "blah skjdhdjkgkjdfgkj sdkjgsdjkgkjsdgk jsdkjgsdk jgkjs dgkjsdkj enfg irjg erjkewhjer hgkerkjg kjerkrekjger", 
+            "Blah", 
+            "blah"
+        ],
+        startDate: "26/10/2023",
+        endDate: "26/10/2024",
+        fundingAmount: "200000.00",
+        fundingCurrency: "USDC"
+    },
+    {
+        title: "Milestone 2",
+        deliverables: ["blah", "Blah", "blah"],
+        startDate: "22/07/2023",
+        endDate: "22/07/2024",
+        fundingAmount: "10000.00",
+        fundingCurrency: "USDC"
+    }
+    
+]
+
+
 
 export default function Page3() {
 
-    const [milestones, setMilestones] = useState<Milestone[]>();
+    const [milestones, setMilestones] = useState<Milestone[]>([]);
     const [deliverables, setDeliverables] = useState<string[]>([]);
 
     const addMilestone = (e: any) => {
@@ -119,6 +142,7 @@ export default function Page3() {
                         })}
 
                         <Button 
+                            margin={"15px 0px 0px 0px"}
                             text="+ Add New Deliverable"
                             onClick={addNewDeliverable}
                             color="none"
@@ -134,9 +158,10 @@ export default function Page3() {
                 </AddMilestoneFormWrapper>
 
                 <h2>Added Milestones</h2>  
-                {milestones ? milestones.map((milestones: any) => {
+                {milestonesPlaceholder.length > 0 ? milestonesPlaceholder.map((milestone: Milestone, idx: number) => {
                     return <AddedMilestones>
-                        
+                        <span className="number">{idx + 1}</span>
+                        <MilestoneDisplay milestone={milestone}/>                        
                     </AddedMilestones>
                 }) : <NoMilestoneYet>You haven't added any milestones yet.</NoMilestoneYet>}
 
@@ -156,7 +181,8 @@ export default function Page3() {
                     </TextLine>
                 </TextSummary> 
 
-                {milestones && <RoadmapSummary milestones={milestones} />}
+                <RoadmapSummary margin={"20px 0px 70px 0px"} milestones={milestonesPlaceholder} />
+                
             </Page3Fonts>
             
         </PageWrapper>

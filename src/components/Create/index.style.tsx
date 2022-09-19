@@ -24,10 +24,6 @@ export const AddAMilestone = styled.div`
 
 `
 
-export const AddedMilestones = styled.div`
-
-`
-
 export const MilestoneRoadmapSummary = styled.div`
 
 `
@@ -83,5 +79,11 @@ export const ButtonsWrapper = styled.div<{pageNo: number}>`
     .link:hover {
         cursor: pointer;
         border-bottom: solid white 2px; 
+    }
+
+    .buttonsPage4 {
+        display: flex;
+        align-items: center;
+        width: 60vw;
     }
 `

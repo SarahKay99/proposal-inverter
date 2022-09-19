@@ -4,11 +4,11 @@ import styled from "styled-components";
 export const ButtonWrapper = styled.button<{
     rounding: 'default' | 'round' | number, 
     color: 'default' | 'blueIce' | 'none',
-    border: 'default' | 'blueIce' | 'none',
-    width: 'default' | number,
+    border: 'default' | 'blueIce' | 'indigo' | 'none',
+    width: 'default' | 'fill-available' | number,
     height: 'default' | number,
     sizeType: 'em' | 'px',
-    hover: 'default' | 'blueIce' | 'none',
+    hover: 'default' | 'blueIce' | 'indigo' | 'none',
     textColor: 'default' | 'white' | 'blue',
     fontWeight: 'default' | number,
     margin: string
@@ -29,10 +29,16 @@ export const ButtonWrapper = styled.button<{
         : `${props.rounding}px`
     };
 
-    width: ${(props: any) => props.width == 'default' ? '88px' : `${props.width}${props.sizeType}` };
+    width: ${(props: any) => props.width == 'default' ? '88px' 
+        : props.width == 'fill-available' ? '-webkit-fill-available' 
+        : `${props.width}${props.sizeType}` };
+    width: ${(props: any) => props.width == 'default' ? '88px' 
+        : props.width == 'fill-available' ? '-moz-available' 
+        : `${props.width}${props.sizeType}` };
     height: ${(props: any) => props.height == 'default' ? '48px' : `${props.height}${props.sizeType}` };
     
     border: ${(props: any) => props.border == 'none' ? 'none' 
+        : (props.border == 'indigo') ? 'solid var(--brand-indigo) 3px'
         : (props.border == 'default' || props.border == 'blueIce') && "solid 3px"};
     border-image: ${(props: any) => 
         props.border == 'blueIce' ? "var(--brand-blue-ice-gradient) 1"
@@ -47,9 +53,10 @@ export const ButtonWrapper = styled.button<{
         };
         background: ${(props: any) => 
             props.hover == 'blueIce' ? "var(--brand-blue-ice-gradient)"
+            : props.hover == 'indigo' ? "var(--brand-indigo)"
             : props.hover == 'default' ? "var(--brand-purple-haze-gradient)"
             : props.hover == 'none' && "none"
-        }};
+        };
         cursor: pointer;
     }
 `

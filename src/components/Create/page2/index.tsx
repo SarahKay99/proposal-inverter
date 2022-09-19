@@ -51,33 +51,48 @@ export default function Page2() {
                 </InfoField>
 
                 <CreateMemberForm>
-                    <InputField 
-                        inputType="label"
-                        placeholder="John"
-                        labelName="Member Name"
-                        helperText="Enter member's name"
-                    />
+                    <div className="form">
+                        <div className="firstColumn">
+                            <InputField 
+                                inputType="label"
+                                placeholder="John"
+                                labelName="Member Name"
+                                subtext="Enter member's name"
+                            />
 
-                    <InputField 
-                        inputType="dropdown"
-                        placeholder="Developer"
-                        labelName="Member Role"
-                        helperText="Select member's role"
-                    />
+                            <InputField 
+                                margin={"25px 0px 0px 0px"}
+                                inputType="label"
+                                placeholder="Johnny.eth"
+                                labelName="Member Wallet Address"
+                                subtext="Add their wallet address"
+                            />
 
-                    <InputField 
-                        inputType="label"
-                        placeholder="Johnny.eth"
-                        labelName="Member Wallet Address"
-                        helperText="Add their wallet address"
-                    />
+                            <InputField 
+                                margin={"25px 0px 0px 0px"}
+                                inputType="label"
+                                placeholder="@JohnnyBitcoin"
+                                labelName="Twitter Handle"
+                                subtext="Add their Twitter handle"
+                            />
+                        </div>
 
-                    <InputField 
-                        inputType="label"
-                        placeholder="@JohnnyBitcoin"
-                        labelName="Twitter Handle"
-                        helperText="Add their Twitter handle"
-                    />
+                        <div className="secondColumn">
+                            <InputField 
+                                inputType="dropdown"
+                                placeholder="Developer"
+                                labelName="Member Role"
+                                subtext="Select member's role"
+                                dropdownOptions={[
+                                    "Product Manager", 
+                                    "Back-end Developer", 
+                                    "Front-end Developer",
+                                    "Developer"
+                                ]}
+                                dropdownType="multipleOptions"
+                            />
+                        </div>
+                    </div>
 
                     <Button 
                         text="+ Add New Member"
@@ -85,16 +100,25 @@ export default function Page2() {
                         color="none"
                         border="blueIce"
                         hover="blueIce"
+                        textColor="white"
+                        width={12}
+                        height={2.8}
+                        margin={"12px 0px 0px 0px"}
                     />
 
-                    <Button 
-                        text="Save"
-                        onClick={saveMember}
-                        color="blueIce"
-                        props={currentMember}
-                    />
+                    <div className="bottomButtons">
+                        <Button 
+                            text="Save"
+                            onClick={saveMember}
+                            color="blueIce"
+                            props={currentMember}
+                            height={3.2}
+                            textColor="white"
+                            hover="blueIce"
+                        />
 
-                    <a onClick={(e) => {}}>Clear Fields</a>
+                        <a onClick={(e) => {}}>Clear Fields</a>
+                    </div>
                 </CreateMemberForm>
                 
                 {savedMembers.map((member: MemberProps) => 
@@ -117,35 +141,43 @@ export default function Page2() {
                 </InfoField>
 
                 <ReceipientWalletForm>
-                    <h3>Receipient Wallet (Multi-Signature Wallets Preferred)</h3>
-                    
-                    <Button 
-                        text="Use Existing Wallet"
-                        onClick={toggleWalletEntryForm}
-                        border="blueIce"
-                        color={showingWalletEntryForm ? "blueIce" : "none"}
-                        textColor="white"
-                    />
+                    <h3 className="walletTitle">Receipient Wallet (Multi-Signature Wallets Preferred)</h3>
+                    <span className="label">Add the wallet address where funding will be received.</span>
 
-                    <Button 
-                        text="Create New Wallet"
-                        onClick={createNewWallet}
-                        border="blueIce"
-                        color="none"
-                        textColor="white"
-                    />
-
-                    {showingWalletEntryForm && (
-                        <>
-                        <span>Add the wallet address where funding will be received.</span>
-                        <InputField 
-                            inputType="label"
-                            placeholder=""
-
+                    <div className="buttons">
+                        <Button 
+                            text="Use Existing Wallet"
+                            onClick={toggleWalletEntryForm}
+                            border="blueIce"
+                            color={showingWalletEntryForm ? "blueIce" : "none"}
+                            textColor="white"
+                            hover="blueIce"
+                            width={11}
+                            height={2.7}
                         />
 
-                        <a onClick={(e) => {}}>Use proposal creator address</a>
-                        </>
+                        <Button 
+                            text="Create New Wallet"
+                            onClick={createNewWallet}
+                            border="blueIce"
+                            color="none"
+                            textColor="white"
+                            hover="blueIce"
+                            width={11}
+                            height={2.7}
+                        />
+                    </div>
+
+                    {showingWalletEntryForm && (
+                        <div className="receiveFunding">
+                            <span className="label">Enter the wallet address where funding will be received.</span>
+                            <InputField 
+                                inputType="label"
+                                placeholder="0x1B14F6C0b2AAA3173F3544b2F3FA9532063981FB"
+                            />
+
+                            <a onClick={(e) => {}}>Use proposal creator address</a>
+                        </div>
                     )}
                 </ReceipientWalletForm>
             </ProposalFunding>

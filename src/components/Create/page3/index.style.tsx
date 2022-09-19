@@ -67,10 +67,18 @@ export const AddMilestoneFormWrapper = styled.div`
     }
 
     .firstColumn {
+        width: 50%;
         margin-right: 4em;
     }
 
     .secondColumn {
-        width: -webkit-fill-available;
+        width: 100%;
     }
+`
+
+export const AddedMilestones = styled.div`
+    display: flex;
+
+    font-family: Inter;
+    font-weight: 700;
 `

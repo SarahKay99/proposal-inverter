@@ -30,7 +30,7 @@ function Label({
                 {questionMarkText && (
                     <QuestionMarkIcon>
                         <img src={"question-mark.png"} />
-                        <div className="infoBubble">{questionMarkText}</div>
+                    <div className="infoBubble">{questionMarkText}</div>
                     </QuestionMarkIcon>
                 )}
             </div>
@@ -44,9 +44,7 @@ function Label({
         </div>
 
         {/* Subtext: under the label */}
-        <div className="subtextWrapper">
-            <span className="subtext">{subtext}</span>
-        </div>
+        <span className="subtext">{subtext}</span>
     </LabelWrapper>
 }
 

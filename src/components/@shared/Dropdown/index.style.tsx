@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
 export const DropdownFieldWrapper = styled.div<{
-    selected: boolean
-    width: 'default' | number
+  selected: boolean
+  width: 'default' | number
+  backgroundColorDropdown: 'light' | 'dark'
 }>`
   margin: 5px 0px 0px 0px;
   text-align: center;
@@ -68,6 +69,9 @@ export const DropdownFieldWrapper = styled.div<{
     width: ${(props) => (props.width == 'default' || props.width == undefined) ? "-webkit-fill-available" : `${props.width}em`};
     width: ${(props) => (props.width == 'default' || props.width == undefined) ? "-moz-available" : `${props.width}em`};
 
+    border: ${(props: any) => props.backgroundColorDropdown == 'light' ? 'none' : 'solid white 1px'};
+    color: ${(props: any) => props.backgroundColorDropdown == 'light' ? 'black' : 'white'};
+
     margin: 0px;
     padding: 0px;
   }
@@ -75,11 +79,12 @@ export const DropdownFieldWrapper = styled.div<{
   li {
     display: ${(props) => props.selected ? 'flex' : 'none'};
 
-    background-color: var(--brand-white-blend);
+    background-color: ${(props: any) => props.backgroundColorDropdown == 'light' ? 'var(--brand-white-blend)' : '#1E293B'};
     height: 35px;
     border-radius: 0px;
     border: none;
     list-style-type: none;
+    height: 1.8em;
   }
 
   li button {
@@ -89,6 +94,7 @@ export const DropdownFieldWrapper = styled.div<{
     background-color: transparent;
     border-radius: 0px;
     border: none;
+    color: ${(props: any) => props.backgroundColorDropdown == 'light' ? 'black' : 'white'};
 
     height: 35px;
     width: ${(props) => (props.width == 'default' || props.width == undefined) ? "-webkit-fill-available" : `${props.width}em`};

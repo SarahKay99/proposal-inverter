@@ -11,7 +11,7 @@ export interface Milestone {
     deliverables: string[]
     startDate: string
     endDate: string
-    fundingAmount: number
+    fundingAmount: number | string
     fundingCurrency: string
 }
 

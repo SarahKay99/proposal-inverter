@@ -22,6 +22,7 @@ interface TextInputProps {
     dropdownType?: 'singleOption' | 'multipleOptions'
     dropdownStyle?: 'plain' | 'checkbox'
     maxOptionsSelected?: number;
+    backgroundColorDropdown?: 'light' | 'dark';
 
     defaultCoin?: string
 
@@ -34,7 +35,7 @@ interface TextInputProps {
     color?: "default" | "blueIce"
 
     buttonProps?: ButtonProps
-    fieldWidth?: number | "default",
+    fieldWidth?: number | "default" | "fill-available",
     fieldHeight?: number | "default",
 
     height?: number | "default"
@@ -52,6 +53,7 @@ function TextInputField({
     dropdownType='singleOption',
     dropdownStyle='plain',
     maxOptionsSelected,
+    backgroundColorDropdown,
 
     defaultCoin,
     
@@ -76,6 +78,7 @@ function TextInputField({
     const [dropdownSelected, setDropdownSelected] = useState<boolean>();
     const [dropdownSelectedOption, setDropdownSelectedOption] = useState<string>('');
     const [dropdownSelectedOptions, setDropdownSelectedOptions] = useState<string[]>([]);
+    const [tooManyOptionsWarningActive, setTooManyOptionsWarningActive] = useState<boolean>(false);
 
     const [numberOfCharacters, setNumberOfCharacters] = useState<number>(0);
     const [errorState, setErrorState] = useState<'normal' | 'error' | 'warning'>('normal');
@@ -93,8 +96,11 @@ function TextInputField({
         } else {
             if (dropdownSelectedOptions.includes(option)) {
                 setDropdownSelectedOptions(existing => existing.filter(item => item !== option));
-            } else {
+                setTooManyOptionsWarningActive(false)
+            } else if (!dropdownSelectedOptions.includes(option) && dropdownSelectedOptions.length < maxOptionsSelected) {
                 setDropdownSelectedOptions(existing => [...existing, option]);
+            } else if (!dropdownSelectedOptions.includes(option) && dropdownSelectedOptions.length == maxOptionsSelected) {
+                setTooManyOptionsWarningActive(true)
             }
         }
     }
@@ -149,6 +155,7 @@ function TextInputField({
                     dropdownOptions={dropdownOptions}
                     dropdownSelectedOption={dropdownSelectedOption}
                     dropdownSelectedOptions={dropdownSelectedOptions}
+                    backgroundColorDropdown={backgroundColorDropdown}
                     toggleDropdown={toggleDropdown}
                     selectOption={selectOption}
                     addOptionOfficially={addOptionOfficially}
@@ -198,6 +205,8 @@ function TextInputField({
             : (dropdownType == "multipleOptions" && <>
                 {dropdownSelectedOptions.length > maxOptionsSelected ? <>
                     <span className={"errorText"}>You have selected too many options. Please select a maximum of {maxOptionsSelected}.</span>
+                </> : tooManyOptionsWarningActive ? <>
+                    <span className={"warningText"}>You are only allowed to select {maxOptionsSelected} options.</span>
                 </> : <>
                     <span>{helperText}</span>
                 </>} 

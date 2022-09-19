@@ -32,6 +32,10 @@ export default function Create() {
     const saveAsDraft = (e: any) => {
         console.log("Saving as draft");
     }
+
+    const SetCurrentPageNumber = (pageNumber: number) => {
+        setPageNumber(pageNumber)
+    }
     
     return (
         <CreatePageWrapper>
@@ -45,6 +49,7 @@ export default function Create() {
                         {progressName: "Funders", pageNumbers: [4, 5]}, 
                         {progressName: "Review", pageNumbers: [6]}
                     ]}
+                    setCurrentPageNumber={SetCurrentPageNumber}
                 />
             </div>
 
@@ -65,31 +70,79 @@ export default function Create() {
             }
 
             <ButtonsWrapper pageNo={pageNumber}>
-                <div className="buttons">
-                    <Button 
-                        text={(pageNumber > 1 && pageNumber <= 6) ? "Previous" : "Return"}
-                        onClick={pageBack}
-                        color={"none"}
-                        hover={"blueIce"}
-                        height={40}
-                        sizeType={"px"}
-                        border={"blueIce"}
-                        textColor={"white"}
-                        margin={"0vw 5vw 0vw 0vw"}
-                    />
-                    <Button 
-                        text={(pageNumber >= 1 && pageNumber < 6) ? "Proceed" : "Submit"}
-                        onClick={pageForward}
-                        color={"blueIce"}
-                        hover={"blueIce"}
-                        height={40}
-                        sizeType={"px"}
-                        border={"blueIce"}
-                        textColor={"white"}
-                    />
-                </div>
+                    {((pageNumber >= 1 && pageNumber <= 3) || pageNumber == 6) ? (
+                        <>
+                        {/* First three pages + Page 5 */}
+                        <div className="buttons">
+                            <Button
+                                text={(pageNumber > 1) ? "Previous" : "Return"}
+                                onClick={pageBack}
+                                color={"none"}
+                                hover={"blueIce"}
+                                height={40}
+                                sizeType={"px"}
+                                border={"blueIce"}
+                                textColor={"white"}
+                                margin={"0vw 5vw 0vw 0vw"}
+                            />
+                            <Button 
+                                text={(pageNumber < 6) ? "Proceed" : "Submit"}
+                                onClick={pageForward}
+                                color={"blueIce"}
+                                hover={"blueIce"}
+                                height={40}
+                                sizeType={"px"}
+                                border={"blueIce"}
+                                textColor={"white"}
+                            />
+                        </div>
 
-                <a className="link" onClick={(e) => saveAsDraft(e)}>SAVE AS A DRAFT</a>
+                        <a className="link" onClick={(e) => saveAsDraft(e)}>SAVE AS A DRAFT</a>
+                        </>
+                    ) : (pageNumber >= 4 && pageNumber <= 5) && (
+                        <>
+                            {/* Page 4a and Page 4b */}
+                            <div className="buttonsPage4">
+                                <Button 
+                                    text={"Previous"}
+                                    onClick={pageBack}
+                                    color={"none"}
+                                    hover={"blueIce"}
+                                    height={40}
+                                    sizeType={"px"}
+                                    border={"blueIce"}
+                                    textColor={"white"}
+                                    margin={"0vw 0.2vw 0vw 0.2vw"}
+                                    width={"fill-available"}
+                                />
+                                <Button 
+                                    text={"Proceed"}
+                                    onClick={pageForward}
+                                    color={"blueIce"}
+                                    hover={"blueIce"}
+                                    height={40}
+                                    sizeType={"px"}
+                                    border={"blueIce"}
+                                    textColor={"white"}
+                                    margin={"0vw 0.2vw 0vw 0.2vw"}
+                                    width={"fill-available"}
+                                />
+                                <Button 
+                                    text={(pageNumber == 4) ? "Skip Features" : "Answer Later"}
+                                    onClick={pageForward}
+                                    color={"none"}
+                                    hover={"indigo"}
+                                    height={40}
+                                    sizeType={"px"}
+                                    border={"indigo"}
+                                    textColor={"white"}
+                                    margin={"0vw 0.2vw 0vw 0.2vw"}
+                                    width={"fill-available"}
+                                />
+                            </div>
+                        </>
+                    )}
+                   
             </ButtonsWrapper>
         </CreatePageWrapper>
 

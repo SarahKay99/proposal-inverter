@@ -6,11 +6,11 @@ export type ButtonProps = {
     onClick: any
     rounding?: 'default' | 'round' | number
     color?: 'default' | 'blueIce' | 'none'
-    border?: 'default' | 'blueIce' | 'none'
-    width?: 'default' | number
+    border?: 'default' | 'blueIce' | 'indigo' | 'none'
+    width?: 'default' | 'fill-available' | number
     height?: 'default' | number
     sizeType?: 'em' | 'px'
-    hover?: 'default' | 'blueIce' | 'none'
+    hover?: 'default' | 'blueIce' | 'indigo' | 'none'
     textColor?: 'default' | 'white' | 'blue'
     fontWeight?: 'default' | number
     margin?: string

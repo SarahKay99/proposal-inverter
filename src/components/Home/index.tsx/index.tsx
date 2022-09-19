@@ -84,6 +84,7 @@ export default function Home() {
             <HomePageTitle>
                 Propose, Fund and <span>Buidl</span>.
             </HomePageTitle>
+            
             <HomePageSubtitle>
                 A funding mechanism where contributors come first.
             </HomePageSubtitle>
