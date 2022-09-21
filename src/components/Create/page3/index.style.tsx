@@ -66,3 +66,29 @@ export const AddedMilestones = styled.div`
     font-family: Inter;
     font-weight: 700;
 `
+
+
+export const Page3Fonts = styled.div`
+    h2 {
+        font-family: Vollkorn;
+        font-weight: 500;
+        font-size: 34px;
+    }
+`
+
+export const MilestoneHeading = styled.div`
+    .pageSubtext {
+        color: #94A3B8;
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 16px;
+    }
+`
+
+export const AddAMilestone = styled.div`
+
+`
+
+export const MilestoneRoadmapSummary = styled.div`
+
+`

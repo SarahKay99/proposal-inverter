@@ -1,11 +1,7 @@
 import { Milestone } from "../../../@context/_types";
 import React, { useEffect, useState } from "react"
 import RoadmapSummary from "../../@shared/RoadmapSummary";
-import { 
-    Page3Fonts,
-    MilestoneHeading,
-} from "../index.style"
-import { AddMilestoneFormWrapper, AddedMilestones, NoMilestoneYet } from "./index.style"
+import { AddMilestoneFormWrapper, AddedMilestones, NoMilestoneYet, Page3Fonts, MilestoneHeading } from "./index.style"
 import { 
     PageWrapper,
     TextSummary,
@@ -39,8 +35,8 @@ export default function Page3() {
             <Page3Fonts>
                 <MilestoneHeading>
                     <h1>What are your proposal milestones?</h1>
-                    <div className="pageSubtext">Milestones let everyone viewing your proposal stay updated on its progress. This is a critical step to keep your Funders in the loop, and to potentially attract new Funders as well.</div>
                     <hr />
+                    <div className="pageSubtext">Milestones let everyone viewing your proposal stay updated on its progress. This is a critical step to keep your Funders in the loop, and to potentially attract new Funders as well.</div>
                 </MilestoneHeading>
 
                 <h2>Add a Milestone</h2>
