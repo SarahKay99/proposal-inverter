@@ -14,12 +14,11 @@ function FundingPartners({
 }: FundingPartnersProps) {
     return <FundingPartnersWrapper>
         <img src={icon} />
-        <div className="padding">
+        <div className="titleAndLink">
             <span className="title">{title}</span>
+            <a className="fundingPartnerLink" href={websiteLink} target="_blank">Visit Website ↗</a>
         </div>
-        <div>
-            <a className="fundingPartnerLink" href={websiteLink} target="_blank">Visit Website</a>
-        </div>
+        
     </FundingPartnersWrapper>
 }
 

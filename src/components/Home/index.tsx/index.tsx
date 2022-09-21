@@ -84,6 +84,7 @@ export default function Home() {
             <HomePageTitle>
                 Propose, Fund and <span>Buidl</span>.
             </HomePageTitle>
+            
             <HomePageSubtitle>
                 A funding mechanism where contributors come first.
             </HomePageSubtitle>
@@ -203,6 +204,7 @@ export default function Home() {
                 <div className="blogpostsFlexBox">
                     {blogposts.map((blogpost: any) => {
                         return <Blogpost 
+                            width={"27vw"}
                             title={blogpost.title}
                             date={blogpost.date}
                             icon={blogpost.icon}

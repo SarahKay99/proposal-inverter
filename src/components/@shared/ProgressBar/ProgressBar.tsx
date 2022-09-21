@@ -1,32 +1,45 @@
-import React from "react";
-import { ProgressBarWrapper, ProgressBarLine, ProgressBarNumber, ProgressBarText, ProgressBarItem } from "./ProgressBar.style";
+import React, { useState } from "react";
+import { ProgressBarWrapper, ProgressBarNumber, ProgressBarText, ProgressBarItem } from "./ProgressBar.style";
+
+interface ProgressPage {
+    progressName: string
+    pageNumbers: number[]
+}
 
 interface ProgressBarProps {
     currentPageNumber: number
-    pages: string[]
+    pages: ProgressPage[]
+    setCurrentPageNumber: (pageNumber: number) => void
 }
 
 function ProgressBar({
     currentPageNumber,
-    pages
+    pages,
+    setCurrentPageNumber
 }: ProgressBarProps) {
+
     return (
         <ProgressBarWrapper>
-            <>
-                <ProgressBarLine />
-                {pages.map((page: string, idx: number) => {
-                    return <ProgressBarItem>
-                        <ProgressBarNumber activePage={currentPageNumber == idx + 1}>
-                            {currentPageNumber < idx + 1 ? 
-                                <img src="tick.png"/>
+            {pages.map((page: ProgressPage, idx: number) => {
+                return (<>
+                    <ProgressBarItem key={page.progressName}>
+                        <ProgressBarNumber 
+                            onClick={(e) => setCurrentPageNumber(Math.min.apply(0, page.pageNumbers))} 
+                            activePage={page.pageNumbers.includes(currentPageNumber)}
+                        >
+                            {(currentPageNumber > Math.max.apply(0, page.pageNumbers) || currentPageNumber == 0) ? 
+                                <img src="tick.svg"/>
                             : (idx + 1)}
                         </ProgressBarNumber>
                         <ProgressBarText activePage={currentPageNumber == idx + 1}>
-                            {page}
+                            {page.progressName}
                         </ProgressBarText>
+                        
                     </ProgressBarItem>
-                })}
-            </>
+                    {idx + 1 < pages.length && <hr />}
+                    </>
+                )
+            })}
         </ProgressBarWrapper>
     )
 }

@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ButtonWrapper } from "./Button.style";
 
-interface ButtonProps {
+export type ButtonProps = {
     text: String
     onClick: any
     rounding?: 'default' | 'round' | number
     color?: 'default' | 'blueIce' | 'none'
-    border?: 'default' | 'blueIce' | 'none'
-    width?: 'default' | number
+    border?: 'default' | 'blueIce' | 'indigo' | 'none'
+    width?: 'default' | 'fill-available' | number
     height?: 'default' | number
     sizeType?: 'em' | 'px'
-    hover?: 'default' | 'blueIce' | 'none'
-    textColor?: 'default' | 'white'
+    hover?: 'default' | 'blueIce' | 'indigo' | 'none'
+    textColor?: 'default' | 'white' | 'blue' | 'babyBlue'
     fontWeight?: 'default' | number
+    margin?: string
+    props?: any
 }
 
 function Button({
@@ -26,8 +28,11 @@ function Button({
     sizeType='em',
     hover='none',
     textColor='default',
-    fontWeight='default'
+    fontWeight='default',
+    margin='default',
+    props
 }: ButtonProps) {
+
     return (
         <ButtonWrapper 
             className={"ButtonText"}
@@ -40,7 +45,8 @@ function Button({
             hover={hover}
             textColor={textColor}
             fontWeight={fontWeight}
-            onClick={onClick}
+            onClick={(e) => { props ? onClick(e, props) : onClick(e) }}
+            margin={margin}
         >
             {text}
         </ButtonWrapper>

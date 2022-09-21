@@ -5,16 +5,13 @@ import Button from '../Button/Button';
 import WalletOptions from "../WalletOptions/WalletOptions";
 import { useAccount } from 'wagmi'
 import { useConnectorPopup } from "../../../@context/connector";
-import MyWallet from "../MyWallet";
+import { useNavigate } from 'react-router-dom';
 
-interface NavbarProps {
-    
-}
-
-function Navbar({}: NavbarProps) {
+function Navbar() {
 
     const { isConnected } = useAccount();
     const { toggleWagmiPopup } = useConnectorPopup(); 
+    const navigate = useNavigate();
 
     const claim = () => {
         console.log("Claimed tokens.");
@@ -23,11 +20,16 @@ function Navbar({}: NavbarProps) {
     return <><NavbarWrapper>
         <div className="leftSide">
             LOGO
-            <a>Create</a>
-            <a>Fund</a>
+            <a onClick={(e) => {
+                navigate('/', {replace: true});
+            }}>Home</a>
+            <a onClick={(e) => {
+                navigate('/create', {replace: true});
+            }}>Create</a>
+            <a>Discover</a>
             <a onClick={(e) => {
                 if (!isConnected) toggleWagmiPopup(e)
-            }}>My Activities</a>
+            }}>My Account</a>
         </div>
 
         <div className="rightSide">

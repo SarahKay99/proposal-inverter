@@ -1,14 +1,14 @@
 @font-face {
     font-family: "Vollkorn";
-    src: local("Vollkorn") url(./fonts/vollkorn-regular-webfont.woff) format('woff');
+    src: url(./fonts/vollkorn-regular-webfont.woff) format('woff');
 }
 
 @font-face {
     font-family: "Vollkorn Bold";
-    src: local("Vollkorn Bold") url(./fonts/vollkorn-bold-webfont.woff) format('woff');
+    src: url(./fonts/vollkorn-bold-webfont.woff) format('woff');
 }
 
 @font-face {
     font-family: "Inter";
-    src: local('Inter') url(./fonts/Inter-Regular.woff2) format('woff2');
+    src: url(./fonts/Inter-Regular.woff2) format('woff2');
 }

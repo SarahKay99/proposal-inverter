@@ -27,4 +27,9 @@ export const FundingPartnersWrapper = styled.div`
         border-bottom: solid white 2px;
     }
 
+    .titleAndLink {
+        margin: 10px 0px 20px 0px;
+        display: flex;
+        flex-direction: column;
+    }
 `
