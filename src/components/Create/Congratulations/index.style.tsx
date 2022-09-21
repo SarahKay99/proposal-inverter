@@ -11,7 +11,7 @@ export const CongratulationsWrapper = styled.div`
 
 export const CongratulationsBox = styled.div`
     padding: 20px;
-    background: #0E1728;
+    background: #171E2E;
     width: 70%;
     border: solid var(--brand-white-blend) 1px;
     border-radius: 6px;

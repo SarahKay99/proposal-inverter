@@ -1,24 +1,25 @@
-import { Milestone } from "@context/_types";
+import { Milestone } from "../../../@context/_types";
 import React, { useEffect, useState } from "react"
 import RoadmapSummary from "../../@shared/RoadmapSummary";
 import { 
     Page3Fonts,
     MilestoneHeading,
-    AddedMilestones,
 } from "../index.style"
-import { AddMilestoneFormWrapper, NoMilestoneYet } from "./index.style"
+import { AddMilestoneFormWrapper, AddedMilestones, NoMilestoneYet } from "./index.style"
 import { 
-    PageWrapper, 
+    PageWrapper,
     TextSummary,
-    TextLine 
+    TextLine
 } from '../shared.style'
 import InputField from "src/components/@shared/InputField";
 import Label from "src/components/@shared/Label";
 import Button from "src/components/@shared/Button/Button";
+import MilestoneDisplay from "src/components/@shared/MilestoneDisplay";
+import { milestonesPlaceholder } from "../../../@context/placeholders";
 
 export default function Page3() {
 
-    const [milestones, setMilestones] = useState<Milestone[]>();
+    const [milestones, setMilestones] = useState<Milestone[]>([]);
     const [deliverables, setDeliverables] = useState<string[]>([]);
 
     const addMilestone = (e: any) => {
@@ -26,9 +27,7 @@ export default function Page3() {
     }
 
     const addNewDeliverable = (e: any) => {
-        var newDeliverables = deliverables;
-        newDeliverables.push("")
-        setDeliverables(newDeliverables)
+        setDeliverables(existing => [...existing, ""])
     }
 
     useEffect(() => {
@@ -54,32 +53,19 @@ export default function Page3() {
                         />
 
                         <div className="estimatedDuration">
-                            <Label labelName="Estimated Duration"/>
-                            <div className="duration">
-                                <div className="start">
-                                    <span className="durationLabel">Start</span>
-                                    <InputField 
-                                        inputType="dateMonthYear"
-                                    />
-                                </div>
-
-                                <div className="end">
-                                    <span className="durationLabel">End</span>
-                                    <InputField 
-                                        inputType="dateMonthYear"
-                                        showUseCurrentDate={false}
-                                    />
-                                </div>
-                                
-                            </div>
+                            <InputField 
+                                labelName="Estimated Milestone Duration"
+                                inputType="timeSelector"
+                                subtext="NOTE: Milestones(s) start once the previous milestone is completed."
+                            />
                         </div>
 
                         <InputField 
                             inputType="coinAmount"
                             placeholder="10.000"
                             defaultCoin="USDC"
-                            labelName="Necessary Funding for Completion of Milestone"
-                            subtext="For this milestone, we need:"
+                            labelName="Necessary Funding"
+                            subtext="Please add the amount of funds you need to complete this milestone."
                         />
 
                         <div className="buttons">
@@ -87,13 +73,13 @@ export default function Page3() {
                                 text="Add Milestone"
                                 onClick={addMilestone}
                                 color="blueIce"
-                                textColor="white"
-                                width={14}
-                                height={2.6}
+                                textColor="default"
+                                width={12}
+                                height={2.8}
                                 sizeType={"em"}
                                 hover={"blueIce"}
                             />
-                            <a onClick={(e) => {}}>Clear Fields</a>
+                            <a className="clearFields" onClick={(e) => {}}>Clear Fields</a>
                         </div>
                     </div>
                     <div className="secondColumn">
@@ -118,6 +104,7 @@ export default function Page3() {
                         })}
 
                         <Button 
+                            margin={"15px 0px 0px 0px"}
                             text="+ Add New Deliverable"
                             onClick={addNewDeliverable}
                             color="none"
@@ -133,14 +120,16 @@ export default function Page3() {
                 </AddMilestoneFormWrapper>
 
                 <h2>Added Milestones</h2>  
-                {milestones ? milestones.map((milestones: any) => {
+                {milestonesPlaceholder.length > 0 ? milestonesPlaceholder.map((milestone: Milestone, idx: number) => {
                     return <AddedMilestones>
-                        
+                        <span className="number">{idx + 1}</span>
+                        <MilestoneDisplay milestone={milestone}/>                        
                     </AddedMilestones>
                 }) : <NoMilestoneYet>You haven't added any milestones yet.</NoMilestoneYet>}
 
                 <h2>Milestone Roadmap Summary</h2>
-                <TextSummary>
+                {/* TODO: Add this commented code to the RoadmapSummary element as an alternative display */}
+                {/* <TextSummary>
                     <TextLine>
                         <h3>Period: </h3> 20/07/23 - 20/03/24
                         <span className="days">(250 Days)</span>
@@ -153,9 +142,10 @@ export default function Page3() {
                     <TextLine>
                         <h3>Total Funding: </h3> 200.000 USDC
                     </TextLine>
-                </TextSummary> 
+                </TextSummary>  */}
 
-                {milestones && <RoadmapSummary milestones={milestones} />}
+                <RoadmapSummary margin={"20px 0px 70px 0px"} milestones={milestonesPlaceholder} />
+                
             </Page3Fonts>
             
         </PageWrapper>

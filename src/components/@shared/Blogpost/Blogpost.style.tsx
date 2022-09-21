@@ -1,18 +1,20 @@
 import styled from "styled-components"
 
-export const BlogpostWrapper = styled.div`
+export const BlogpostWrapper = styled.div<{width: string}>`
     border-radius: 10px;
     border: solid white 1px;
-    color: white;    
+    color: white; 
+    width: ${(props: any) => props.width == 'default' ? '' : props.width};  
 
-    margin-bottom: 30px;
+    margin: 0px 5px 30px 5px;
 
     .contentWrapper {
         
     }
 
     img {
-        width: 9em;
+        width: -wekbit-fill-available;
+        width: -moz-available;
         height: auto;
         border-radius: 10px;
     }

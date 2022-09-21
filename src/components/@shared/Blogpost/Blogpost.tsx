@@ -7,20 +7,22 @@ interface BlogpostProps {
     date: string
     icon: string
     link: string
+    width?: string
 }
 
 function Blogpost({
     title,
     date,
     icon,
-    link
+    link,
+    width='default'
 }: BlogpostProps) {
     const redirect = (e?: any) => {
         window.location.href=link
     }
 
     return (
-        <BlogpostWrapper>
+        <BlogpostWrapper width={width}>
             <img src={icon}/>
             <div className="contentWrapper">
                 <div className="title">

@@ -9,7 +9,11 @@ function CategoryMenu(
     {options}: CategoryMenuProps
 ) {
     return <CategoryMenuWrapper>
-
+        {options.map((option: string, idx: number) => {
+            return <button key={idx.toString()} className="option">
+                {option}
+            </button>
+        })}
     </CategoryMenuWrapper>
 }
 

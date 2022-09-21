@@ -25,26 +25,6 @@ export const AddMilestoneFormWrapper = styled.div`
         margin: 20px 0px 20px 0px;
     }
 
-    .duration {
-        display: flex;
-        color: #A3A3A3;
-        font-size: 16px;
-        font-weight: 700;
-    }
-
-    .durationLabel {
-        margin-right: 10px;
-    }
-
-    .start {
-        display: flex;
-        margin-right: 20px;
-    }
-
-    .end {
-        display: flex;
-    }
-
     .deliverable {
         display: flex;
     }
@@ -59,7 +39,7 @@ export const AddMilestoneFormWrapper = styled.div`
         font-family: Inter;
         font-weight: 700;
 
-        margin-left: 5em;
+        margin-left: 2em;
     }
 
     .buttons a:hover {
@@ -67,10 +47,22 @@ export const AddMilestoneFormWrapper = styled.div`
     }
 
     .firstColumn {
+        width: 80%;
         margin-right: 4em;
     }
 
     .secondColumn {
-        width: -webkit-fill-available;
+        width: 100%;
     }
+
+    .clearFields { 
+        color: var(--brand-baby-blue);
+    }
+`
+
+export const AddedMilestones = styled.div`
+    display: flex;
+
+    font-family: Inter;
+    font-weight: 700;
 `

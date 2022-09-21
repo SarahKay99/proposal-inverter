@@ -11,9 +11,10 @@ import Label from "../Label";
 import Dropdown from "../Dropdown";
 import CoinAmountInput from "../CoinAmountInput";
 import DateMonthYear from "../DateMonthYear";
+import TimeSelector from "../TimeSelector";
 
 interface TextInputProps {
-    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button' | 'coinAmount' | 'dateMonthYear'
+    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button' | 'coinAmount' | 'dateMonthYear' | 'dateMonthYearStartEnd' | 'timeSelector'
     labelName?: string
     placeholder?: string
     subtext?: string
@@ -22,6 +23,7 @@ interface TextInputProps {
     dropdownType?: 'singleOption' | 'multipleOptions'
     dropdownStyle?: 'plain' | 'checkbox'
     maxOptionsSelected?: number;
+    backgroundColorDropdown?: 'light' | 'dark';
 
     defaultCoin?: string
 
@@ -34,7 +36,7 @@ interface TextInputProps {
     color?: "default" | "blueIce"
 
     buttonProps?: ButtonProps
-    fieldWidth?: number | "default",
+    fieldWidth?: number | "default" | "fill-available",
     fieldHeight?: number | "default",
 
     height?: number | "default"
@@ -52,6 +54,7 @@ function TextInputField({
     dropdownType='singleOption',
     dropdownStyle='plain',
     maxOptionsSelected,
+    backgroundColorDropdown,
 
     defaultCoin,
     
@@ -76,6 +79,7 @@ function TextInputField({
     const [dropdownSelected, setDropdownSelected] = useState<boolean>();
     const [dropdownSelectedOption, setDropdownSelectedOption] = useState<string>('');
     const [dropdownSelectedOptions, setDropdownSelectedOptions] = useState<string[]>([]);
+    const [tooManyOptionsWarningActive, setTooManyOptionsWarningActive] = useState<boolean>(false);
 
     const [numberOfCharacters, setNumberOfCharacters] = useState<number>(0);
     const [errorState, setErrorState] = useState<'normal' | 'error' | 'warning'>('normal');
@@ -86,19 +90,18 @@ function TextInputField({
     }
 
     const selectOption = (e: any, option: string) => {
-        console.log(`OPTION = ${option}`);
         e.preventDefault();
         if (dropdownType == 'singleOption') {
             setDropdownSelectedOption(option);
             setDropdownSelected(!dropdownSelected);
         } else {
-            const options: string[] = dropdownSelectedOptions;
             if (dropdownSelectedOptions.includes(option)) {
-                var cuttedOptions = options.filter(e => e !== option);
-                setDropdownSelectedOptions(cuttedOptions);
-            } else {
-                options.push(option);
-                setDropdownSelectedOptions(options);
+                setDropdownSelectedOptions(existing => existing.filter(item => item !== option));
+                setTooManyOptionsWarningActive(false)
+            } else if (!dropdownSelectedOptions.includes(option) && dropdownSelectedOptions.length < maxOptionsSelected) {
+                setDropdownSelectedOptions(existing => [...existing, option]);
+            } else if (!dropdownSelectedOptions.includes(option) && dropdownSelectedOptions.length == maxOptionsSelected) {
+                setTooManyOptionsWarningActive(true)
             }
         }
     }
@@ -153,6 +156,7 @@ function TextInputField({
                     dropdownOptions={dropdownOptions}
                     dropdownSelectedOption={dropdownSelectedOption}
                     dropdownSelectedOptions={dropdownSelectedOptions}
+                    backgroundColorDropdown={backgroundColorDropdown}
                     toggleDropdown={toggleDropdown}
                     selectOption={selectOption}
                     addOptionOfficially={addOptionOfficially}
@@ -181,8 +185,22 @@ function TextInputField({
                     placeholder={placeholder}
                     defaultCoin={defaultCoin}
                 />
-            ) : inputType == 'dateMonthYear' && (
+            ) : inputType == 'dateMonthYear' ? (
                 <DateMonthYear showUseCurrentDate={showUseCurrentDate} />
+            ) : inputType == 'dateMonthYearStartEnd' ? (
+                <div className="duration">
+                    <div className="start">
+                        <span className="durationLabel">Start</span>
+                        <DateMonthYear showUseCurrentDate={showUseCurrentDate} />
+                    </div>
+
+                    <div className="end">
+                        <span className="durationLabel">End</span>
+                        <DateMonthYear showUseCurrentDate={false} />
+                    </div>
+                </div>
+            ) : inputType == 'timeSelector' && (
+                <TimeSelector />
             )}
 
         </InputWrapper>
@@ -202,6 +220,8 @@ function TextInputField({
             : (dropdownType == "multipleOptions" && <>
                 {dropdownSelectedOptions.length > maxOptionsSelected ? <>
                     <span className={"errorText"}>You have selected too many options. Please select a maximum of {maxOptionsSelected}.</span>
+                </> : tooManyOptionsWarningActive ? <>
+                    <span className={"warningText"}>You are only allowed to select {maxOptionsSelected} options.</span>
                 </> : <>
                     <span>{helperText}</span>
                 </>} 

@@ -36,7 +36,7 @@ function MyWallet() {
         <div className="rateLine">
             <div className="rateAmount">
                 <span className="amount">345.89</span>
-                <img src={"usdc.png"}/>
+                <img src={"USDC.png"}/>
                 <span className="currency">USDC</span>
             </div>
             <a onClick={(e) => {}}>Claim Stream</a>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProgressBarWrapper, ProgressBarNumber, ProgressBarText, ProgressBarItem } from "./ProgressBar.style";
 
 interface ProgressPage {
@@ -9,18 +9,24 @@ interface ProgressPage {
 interface ProgressBarProps {
     currentPageNumber: number
     pages: ProgressPage[]
+    setCurrentPageNumber: (pageNumber: number) => void
 }
 
 function ProgressBar({
     currentPageNumber,
-    pages
+    pages,
+    setCurrentPageNumber
 }: ProgressBarProps) {
+
     return (
         <ProgressBarWrapper>
             {pages.map((page: ProgressPage, idx: number) => {
                 return (<>
                     <ProgressBarItem key={page.progressName}>
-                        <ProgressBarNumber activePage={page.pageNumbers.includes(currentPageNumber)}>
+                        <ProgressBarNumber 
+                            onClick={(e) => setCurrentPageNumber(Math.min.apply(0, page.pageNumbers))} 
+                            activePage={page.pageNumbers.includes(currentPageNumber)}
+                        >
                             {(currentPageNumber > Math.max.apply(0, page.pageNumbers) || currentPageNumber == 0) ? 
                                 <img src="tick.svg"/>
                             : (idx + 1)}

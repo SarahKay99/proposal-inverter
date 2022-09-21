@@ -63,5 +63,5 @@ export const QuestionMarkIcon = styled.div`
 export const CharLimitWrapper = styled.div<{tooManyChars: boolean}>`
   font-size: 12px;
   font-weight: 300;
-  color: ${(props) => props.tooManyChars ? 'var(--brand-alert-red-error)' : 'var(--brand-white-blend)'};
+  color: ${(props) => props.tooManyChars ? 'var(--brand-alert-red-error)' : '#797979'};
 `

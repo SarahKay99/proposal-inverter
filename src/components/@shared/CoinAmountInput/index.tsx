@@ -19,7 +19,7 @@ function CoinAmountInput({
             <button
                 onClick={(e) => {}}
             >
-                <img className="icon" src={"usdc.png"}/>
+                <img className="icon" src={"USDC.png"}/>
                 <span className="coin">{selectedCoin}</span>
             </button>
         </div>

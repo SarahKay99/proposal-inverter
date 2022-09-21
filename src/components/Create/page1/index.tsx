@@ -161,6 +161,7 @@ export default function Page1() {
                                 maxOptionsSelected={3}
                                 placeholder="Select Category"
                                 dropdownOptions={["ReFi", "DeSci", "DeFi", "Public Goods", "DAOs"]}
+                                backgroundColorDropdown={"dark"}
                                 margin={"20px 0px 0px 0px"}
                             />
 
