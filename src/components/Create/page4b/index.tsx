@@ -1,110 +1,8 @@
+import { placeholderQuestions } from "../../../@context/placeholders"
 import React, { useState } from "react"
 import FundingPartnersQuestions from "src/components/@shared/FundingPartnersQuestions"
 import { PageWrapper, Page4Specs, BottomText } from "../shared.style"
 import { FundingPartnersQuestionsWrapper } from "./index.style"
-
-const placeholderQuestions = [
-    {
-        title: "Hello",
-        grantGenre: "Celo Grants",
-        summary: "Information about the Forum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        questions: [
-            {
-                question: "Question 1",
-                extraInfo: "jkjkerjkherjkher",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 2",
-                extraInfo: "jkjkerjkhe rjkhe r wkjrhjern n jkhgkher kgjwr",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 3",
-                extraInfo: "jkjkerjkherjkhekjkjekjfhjkdfgkjdfjkgr",
-                helperText: "Helper Text",
-                charLimit: 100
-            }
-        ],
-    },
-    {
-        title: "Hello",
-        grantGenre: "Celo Grants",
-        summary: "Information about the Forum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        questions: [
-            {
-                question: "Question 1",
-                extraInfo: "jkjkerjkherjkher",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 2",
-                extraInfo: "jkjkerjkhe rjkhe r wkjrhjern n jkhgkher kgjwr",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 3",
-                extraInfo: "jkjkerjkherjkhekjkjekjfhjkdfgkjdfjkgr",
-                helperText: "Helper Text",
-                charLimit: 100
-            }
-        ],
-    },
-    {
-        title: "Hello",
-        grantGenre: "DeFi Grants",
-        summary: "Information about the Forum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        questions: [
-            {
-                question: "Question 1",
-                extraInfo: "jkjkerjkherjkher",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 2",
-                extraInfo: "jkjkerjkhe rjkhe r wkjrhjern n jkhgkher kgjwr",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 3",
-                extraInfo: "jkjkerjkherjkhekjkjekjfhjkdfgkjdfjkgr",
-                helperText: "Helper Text",
-                charLimit: 100
-            }
-        ],
-    },
-    {
-        title: "Hello",
-        grantGenre: "DeSci Grants",
-        summary: "Information about the Forum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        questions: [
-            {
-                question: "Question 1",
-                extraInfo: "jkjkerjkherjkher",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 2",
-                extraInfo: "jkjkerjkhe rjkhe r wkjrhjern n jkhgkher kgjwr",
-                helperText: "Helper Text",
-                charLimit: 100
-            },
-            {
-                question: "Question 3",
-                extraInfo: "jkjkerjkherjkhekjkjekjfhjkdfgkjdfjkgr",
-                helperText: "Helper Text",
-                charLimit: 100
-            }
-        ],
-    },
-]
 
 export default function Page4b() {
     const [answeredQuestions, setAnsweredQuestions] = useState<any[]>([])
@@ -118,10 +16,12 @@ export default function Page4b() {
                 <FundingPartnersQuestionsWrapper>
                     {placeholderQuestions.map((placeholderQuestion: any, idx: number) => {
                         return <FundingPartnersQuestions 
+                            key={idx.toString()}
                             title={placeholderQuestion.title}
                             grantGenre={placeholderQuestion.grantGenre}
                             summary={placeholderQuestion.summary}
                             questions={placeholderQuestion.questions}
+                            showQuestionsAnswered={true}
                         />
                     })}
                 </FundingPartnersQuestionsWrapper>

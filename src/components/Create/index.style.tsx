@@ -64,7 +64,7 @@ export const ButtonsWrapper = styled.div<{pageNo: number}>`
     display: ${(props: any) => props.pageNo == 0 ? 'none' : 'flex'};
     align-items: center;
     justify-content: ${(props: any) => 
-        (props.pageNo == 1 || props.pageNo == 2 || props.pageNo == 3) ? 'flex-end'
+        (props.pageNo == 1 || props.pageNo == 2 || props.pageNo == 3 || props.pageNo == 6) ? 'flex-end'
     : (props.pageNo == 4 || props.pageNo == 5) && 'center'};
 
     margin-bottom: 70px;

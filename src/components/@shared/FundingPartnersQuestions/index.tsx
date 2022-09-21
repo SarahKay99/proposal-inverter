@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../Button/Button";
 import CardStatus from "../CardStatus";
 import InputField from "../InputField";
 import { 
@@ -18,9 +19,10 @@ interface FundingPartnersQuestionsProps {
 
 export interface Question {
     question: string
-    extraInfo: string
-    helperText: string
-    charLimit: number
+    placeholder?: string
+    extraInfo?: string
+    helperText?: string
+    charLimit?: number
 }
 
 function FundingPartnersQuestions({
@@ -42,23 +44,25 @@ function FundingPartnersQuestions({
         showQuestionsAnswered={showQuestionsAnswered}
         noQuestionsLeft={(questions.length - answeredQuestions.length) == 0}
     >
-        <TitleAndSummary>
+        <TitleAndSummary className="padding">
             <CardStatus status={grantGenre} />
             <h1>{title}</h1>
             {summary}
         </TitleAndSummary>
 
-        <VisitApplication noQuestionsLeft={(questions.length - answeredQuestions.length) == 0}>
+        <VisitApplication className="padding" noQuestionsLeft={(questions.length - answeredQuestions.length) == 0}>
             {showQuestionsAnswered ? (
                 <>
-                    <span className="questionQuantity">{questions.length} Questions</span>
-                    <span className="questionStatus">
-                        {(questions.length - answeredQuestions.length == 0) ? (
-                            "Answered Questions"
-                        ) : (
-                            "Unanswered Questions"
-                        )}
-                    </span>
+                    <div>
+                        <span className="questionQuantity">{questions.length} Questions</span>
+                        <span className="questionStatus">
+                            {(questions.length - answeredQuestions.length == 0) ? (
+                                "Answered Questions"
+                            ) : (
+                                "Unanswered Questions"
+                            )}
+                        </span>
+                    </div>
                     
                     <button onClick={(e) => {toggleDropdown(e)}} className="blankButton">
                         {dropdownSelected ? <img src="upward-arrow.png" /> : <img src="downward-arrow.png" />}
@@ -74,16 +78,28 @@ function FundingPartnersQuestions({
             )}
         </VisitApplication>
 
-        {dropdownSelected && <QuestionsDropdown>
+        {dropdownSelected && <QuestionsDropdown className="padding">
+            <>
             {questions.map((question: Question, idx: number) => {
                 return <InputField 
+                    margin={"0em 0em 1em 0em"}
                     inputType="textArea"
+                    placeholder={question.placeholder}
                     labelName={question.question}
                     questionMarkText={question.extraInfo}
                     charLimit={question.charLimit}
                     helperText={question.helperText}
                 />
             })}
+            <Button 
+                margin={"0em 0em 2em 0em"}
+                text="Save"
+                onClick={{}}
+                textColor="white"
+                color="blueIce"
+                hover="blueIce"
+            />
+            </>
         </QuestionsDropdown>}
     </FundingPartnersQuestionsWrapper>
 }

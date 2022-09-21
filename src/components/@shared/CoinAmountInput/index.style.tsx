@@ -11,7 +11,7 @@ export const CoinAmountInputWrapper = styled.div`
         height: initial !important;
         width: 55px !important;
 
-        border: solid var(--brand-white-blend) 1px;
+        border: solid var(--brand-white-blend) 2px !important;
     }
     
     button {
@@ -33,6 +33,7 @@ export const CoinAmountInputWrapper = styled.div`
 
     button:hover {
         cursor: pointer;
+        background-color: var(--brand-background-color);
     }
 
     .icon {

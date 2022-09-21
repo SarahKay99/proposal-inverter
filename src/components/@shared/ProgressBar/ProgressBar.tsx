@@ -24,7 +24,7 @@ function ProgressBar({
                 return (<>
                     <ProgressBarItem key={page.progressName}>
                         <ProgressBarNumber 
-                            onClick={(e) => setCurrentPageNumber(Math.max.apply(0, page.pageNumbers))} 
+                            onClick={(e) => setCurrentPageNumber(Math.min.apply(0, page.pageNumbers))} 
                             activePage={page.pageNumbers.includes(currentPageNumber)}
                         >
                             {(currentPageNumber > Math.max.apply(0, page.pageNumbers) || currentPageNumber == 0) ? 

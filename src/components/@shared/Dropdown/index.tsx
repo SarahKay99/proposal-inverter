@@ -56,6 +56,7 @@ function Dropdown({
         </button>
 
         {dropdownOptions != undefined && (
+            <>
             <div className="scrolling">
                 <ul>
                     {dropdownOptions.map((option: any) => {
@@ -76,30 +77,30 @@ function Dropdown({
                         </li>
                     })}
                 </ul>
-                <hr />
-                {dropdownType == 'multipleOptions' && 
-                    <div className="buttons">
-                        <Button 
-                            text="Cancel"
-                            onClick={toggleDropdown}
-                            color="none"
-                            hover="blueIce"
-                            textColor="blue"
-                            width={6}
-                            sizeType={"em"}
-                        />
-                        <Button 
-                            text="Add"
-                            onClick={addOptionOfficially}
-                            color="blueIce"
-                            hover="blueIce"
-                            textColor="white"
-                            width={6}
-                            sizeType={"em"}
-                        />
-                    </div>
-                }
             </div>
+            {dropdownType == 'multipleOptions' && 
+                <div className="buttons">
+                    <Button 
+                        text="Close"
+                        onClick={toggleDropdown}
+                        color="none"
+                        hover="blueIce"
+                        textColor="blue"
+                        width={6}
+                        sizeType={"em"}
+                    />
+                    <Button 
+                        text="Add"
+                        onClick={addOptionOfficially}
+                        color="blueIce"
+                        hover="blueIce"
+                        textColor="white"
+                        width={6}
+                        sizeType={"em"}
+                    />
+                </div>
+            }
+        </>
         )}
     </DropdownFieldWrapper>
 }

@@ -1,3 +1,4 @@
+import { StyleProps } from "@context/_types"
 import React from "react"
 import { 
     LabelWrapper, 
@@ -12,6 +13,7 @@ interface LabelProps {
     questionMarkText?: string
     charLimit?: number
     subtext?: string
+    style?: StyleProps
 }
 
 function Label({
@@ -19,12 +21,13 @@ function Label({
     questionMarkText,
     charLimit,
     numberOfCharacters,
-    subtext
+    subtext,
+    style
 }: LabelProps) {
     return <LabelWrapper>
         <div className={"flexBox"}>
             <div className={"label"}>
-                <LabelNameWrapper>{labelName}</LabelNameWrapper>
+                <LabelNameWrapper style={style}>{labelName}</LabelNameWrapper>
                 
                 {/* Info about the box: directly beside the label */}
                 {questionMarkText && (

@@ -9,6 +9,28 @@ export const InputFieldWrapper = styled.div<{
   width: ${(props: any) => props.width == 'default' || undefined ? "-webkit-fill-available" : `${props.width}em`};
   width: ${(props: any) => props.width == 'default' || undefined ? "-moz-available" : `${props.width}em`};
   height: ${(props: any) => props.height == 'default' || undefined ? "" : `${props.height}em`};
+
+  
+  .duration {
+    display: flex;
+    color: #A3A3A3;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .durationLabel {
+    margin-right: 10px;
+  }
+
+  .start {
+      display: flex;
+      margin-right: 20px;
+  }
+
+  .end {
+      display: flex;
+  }
+
 `
 
 export const InputWrapper = styled.div<{
@@ -22,6 +44,7 @@ export const InputWrapper = styled.div<{
   width: 100%;
 
   input[type=text] {
+    font-family: Inter;
     border-radius: 10px;
     padding-left: 12px;
     width: ${(props) => (props.fieldWidth == 'default' || props.fieldWidth == undefined || props.fieldWidth == 'fill-available') ? "-webkit-fill-available" : `${props.fieldWidth}em`};
@@ -57,6 +80,7 @@ export const InputWrapper = styled.div<{
   }
 
   textarea {
+    font-family: Inter;
     border-radius: 7px;
     padding-left: 12px;
     padding-top: 12px;
@@ -72,6 +96,8 @@ export const HelperTextWrapper = styled.div`
   text-align: left;
   margin-left: 3px;
   margin-top: 5px;
+
+  color: #797979;
 
   .errorText {
     color: var(--brand-alert-red-error);

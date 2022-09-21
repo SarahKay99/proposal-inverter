@@ -1,12 +1,16 @@
 import styled from "styled-components"
 
 export const Page5Specs = styled.div`
+    .indent {
+        margin: 1em 0em 0em 1.2em;
+    }
+
     .font {
         font-family: Inter;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
-        color: #9398A8; 
+        color: white; 
     }
 
     ol {
@@ -15,5 +19,10 @@ export const Page5Specs = styled.div`
 `
 
 export const DetailField = styled.div`
-    margin: 8px 0px 30px 0px;
+    margin: 0.5em 0em 1.75em 1em;
+    width: 60vw;
+
+    p {
+        width: 40vw;
+    }
 `

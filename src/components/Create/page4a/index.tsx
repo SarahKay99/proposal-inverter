@@ -1,3 +1,4 @@
+import { placeholderPartners } from "../../../@context/placeholders"
 import React, { useState } from "react"
 import CategoryMenu from "src/components/@shared/CategoryMenu"
 import Filter from "src/components/@shared/Filter"
@@ -15,75 +16,6 @@ interface FundingPartner {
     maxAllocationQuantity: 10000,
     maxAllocationCurrency: "USDC",
 }
-
-const placeholderPartners = [
-    {
-        title: "ETH Foundation",
-        description: "Information about the Forum Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        grantGenre: "ReFi Grants",
-        successRate: "3 of 7",
-        poolQuantity: 200000,
-        poolCurrency: "USDC",
-        maxAllocationQuantity: 10000,
-        maxAllocationCurrency: "USDC",
-        selected: false
-    },
-    {
-        title: "ETH Foundation",
-        description: "Information about the Forum Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        grantGenre: "Celo Grants",
-        successRate: "3 of 7",
-        poolQuantity: 200000,
-        poolCurrency: "USDC",
-        maxAllocationQuantity: 10000,
-        maxAllocationCurrency: "USDC",
-        selected: false
-    },
-    {
-        title: "ETH Foundation",
-        description: "Information about the Forum Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        grantGenre: "Celo Grants",
-        successRate: "3 of 7",
-        poolQuantity: 200000,
-        poolCurrency: "USDC",
-        maxAllocationQuantity: 10000,
-        maxAllocationCurrency: "USDC",
-        selected: false
-    },
-    {
-        title: "ETH Foundation",
-        description: "Information about the Forum Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        grantGenre: "ReFi Grants",
-        successRate: "3 of 7",
-        poolQuantity: 200000,
-        poolCurrency: "USDC",
-        maxAllocationQuantity: 10000,
-        maxAllocationCurrency: "USDC",
-        selected: false
-    },
-    {
-        title: "ETH Foundation",
-        description: "Information about the Forum Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        grantGenre: "ReFi Grants",
-        successRate: "3 of 7",
-        poolQuantity: 200000,
-        poolCurrency: "USDC",
-        maxAllocationQuantity: 10000,
-        maxAllocationCurrency: "USDC",
-        selected: false
-    },
-    {
-        title: "ETH Foundation",
-        description: "Information about the Forum Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-        grantGenre: "Celo Grants",
-        successRate: "3 of 7",
-        poolQuantity: 200000,
-        poolCurrency: "USDC",
-        maxAllocationQuantity: 10000,
-        maxAllocationCurrency: "USDC",
-        selected: false
-    },
-]
 
 export default function Page4a() {
     const [selectedPartners, setSelectedPartners] = useState<any>([]);
@@ -112,6 +44,7 @@ export default function Page4a() {
                 <FundingPartnersWrapper>
                     {placeholderPartners.map((placeholderPartner: any, idx: number) => {
                         return <FundingPartnersSelect 
+                            key={idx.toString()}
                             grantGenre={placeholderPartner.grantGenre}
                             title={placeholderPartner.title}
                             summary={placeholderPartner.description}

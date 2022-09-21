@@ -8,8 +8,38 @@ export const RoadmapSummaryWrapper = styled.div<{margin: string, milestones?: bo
 
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
-    padding: 25px;
+    .textSummary {
+        display: flex;
+        margin: 0em 0em 1em 0em;
+    }
+
+    .milestones {
+        display: flex;
+        justify-content: flex-start
+    }
+
+    .flexSpan {
+        display: flex;
+        flex-direction: column;
+        margin: 0em 7em 0em 0em;
+
+        font-family: Inter;
+        font-size: 14px;
+    }
+
+    .daysFont {
+        font-size: 12px;
+        color: #797979;
+        margin: 0em 0em 0em 0.6em;
+    }
+
+    .flexSpan b {
+        margin: 0em 0em 0.5em 0em;
+    }
+
+    padding: 10px 10px 10px 10px;
 
     .none {
         font-family: Inter;
@@ -18,6 +48,10 @@ export const RoadmapSummaryWrapper = styled.div<{margin: string, milestones?: bo
         color: var(--brand-baby-blue);
         width: 100%;
         text-align: left;
+    }
+
+    .font {
+
     }
 `
 

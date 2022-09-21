@@ -204,6 +204,7 @@ export default function Home() {
                 <div className="blogpostsFlexBox">
                     {blogposts.map((blogpost: any) => {
                         return <Blogpost 
+                            width={"27vw"}
                             title={blogpost.title}
                             date={blogpost.date}
                             icon={blogpost.icon}

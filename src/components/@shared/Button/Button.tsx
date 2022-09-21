@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ButtonWrapper } from "./Button.style";
 
 export type ButtonProps = {
@@ -11,7 +11,7 @@ export type ButtonProps = {
     height?: 'default' | number
     sizeType?: 'em' | 'px'
     hover?: 'default' | 'blueIce' | 'indigo' | 'none'
-    textColor?: 'default' | 'white' | 'blue'
+    textColor?: 'default' | 'white' | 'blue' | 'babyBlue'
     fontWeight?: 'default' | number
     margin?: string
     props?: any
@@ -32,6 +32,7 @@ function Button({
     margin='default',
     props
 }: ButtonProps) {
+
     return (
         <ButtonWrapper 
             className={"ButtonText"}

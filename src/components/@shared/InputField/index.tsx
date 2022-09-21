@@ -11,9 +11,10 @@ import Label from "../Label";
 import Dropdown from "../Dropdown";
 import CoinAmountInput from "../CoinAmountInput";
 import DateMonthYear from "../DateMonthYear";
+import TimeSelector from "../TimeSelector";
 
 interface TextInputProps {
-    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button' | 'coinAmount' | 'dateMonthYear'
+    inputType: 'label' | 'textArea' | 'dropdown' | 'yesNo' | 'button' | 'coinAmount' | 'dateMonthYear' | 'dateMonthYearStartEnd' | 'timeSelector'
     labelName?: string
     placeholder?: string
     subtext?: string
@@ -184,8 +185,22 @@ function TextInputField({
                     placeholder={placeholder}
                     defaultCoin={defaultCoin}
                 />
-            ) : inputType == 'dateMonthYear' && (
+            ) : inputType == 'dateMonthYear' ? (
                 <DateMonthYear showUseCurrentDate={showUseCurrentDate} />
+            ) : inputType == 'dateMonthYearStartEnd' ? (
+                <div className="duration">
+                    <div className="start">
+                        <span className="durationLabel">Start</span>
+                        <DateMonthYear showUseCurrentDate={showUseCurrentDate} />
+                    </div>
+
+                    <div className="end">
+                        <span className="durationLabel">End</span>
+                        <DateMonthYear showUseCurrentDate={false} />
+                    </div>
+                </div>
+            ) : inputType == 'timeSelector' && (
+                <TimeSelector />
             )}
 
         </InputWrapper>

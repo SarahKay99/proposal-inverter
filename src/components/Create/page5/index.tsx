@@ -1,21 +1,12 @@
+import { milestonesPlaceholder, placeholderProposal, placeholderQuestions } from "../../../@context/placeholders"
 import React from "react"
+import FundingPartnersQuestions from "src/components/@shared/FundingPartnersQuestions"
 import Label from "../../@shared/Label"
 import { PageWrapper } from "../shared.style"
 import { Page5Specs, DetailField } from "./index.style"
+import RoadmapSummary from "src/components/@shared/RoadmapSummary"
 
-const placeholderProposal = {
-    title: "Proposal Title",
-    summary: "Lorem ipsum dolor sit amet, qui falli iuvaret an, dicat omnesque vulputate sed no, odio diam volumus eam ne. Wisi lucilius pertinax mea ea, duo maiorum ancillae ea, ne summo essent minimum eum. Soluta altera no mei. Inani accusamus an pro, dico delectus argumentum usu cu movet ceteros salutandi an pro.",
-    detailedExplanation: "Lorem ipsum dolor sit amet, qui falli iuvaret an, dicat omnesque vulputate sed no,odio diam volumus eam ne. Wisi lucilius pertinax mea ea, duo maiorum ancillae ea, ne summo essent minimum eum. Soluta altera no mei. Inani accusamus an pro, dico delectus argumentum usu cu movet ceteros salutandi an pro. Lorem ipsum dolor sit amet, qui falli iuvaret an, dicat omnesque vulputate sed no,odio diam volumus eam ne. Wisi lucilius pertinax mea ea, duo maiorum ancillae ea, ne summo essent minimum eum. Soluta altera no mei. Inani accusamus an pro, dico delectus argumentum usu cu movet ceteros salutandi an pro.Lorem ipsum dolor sit amet, qui falli iuvaret an, dicat omnesque vulputate sed no,odio diam volumus eam ne. Wisi lucilius pertinax mea ea, duo maiorum ancillae ea, ne summo essent minimum eum. Soluta altera no mei. Inani accusamus an pro, dico delectus argumentum usu cu movet ceteros salutandi an pro.",
-    creator: "zero.eth",
-    contributors: [
-        "one.eth",
-        "Two.eth",
-        "three.eth",
-        "four.eth",
-        "five.eth"
-    ]
-}
+const labelsStyle = {fontSize: "22px", color: 'white', fontWeight: 700}
 
 export default function Page5() {
     return (
@@ -24,55 +15,91 @@ export default function Page5() {
                 <h1>Review Your Proposal</h1>
                 <hr />
 
-                <DetailField>
-                    <Label labelName="Title"/>
-                    <p className="font">{placeholderProposal.title}</p>
-                </DetailField>
-                
-                <DetailField>
-                    <Label labelName="Summary"/>
-                    <p className="font">{placeholderProposal.summary}</p>
-                </DetailField>
+                <div className="indent">
+                    <DetailField>
+                        <Label 
+                            labelName="Proposal Creator Address" 
+                            style={labelsStyle}
+                        />
+                        <p className="font">{placeholderProposal.creatorAddress}</p>
+                    </DetailField>
 
-                <DetailField>
-                    <Label labelName="Detailed Explanation" />
-                    <p className="font">{placeholderProposal.detailedExplanation}</p>
-                </DetailField>
+                    <DetailField>
+                        <Label 
+                            labelName="Proposal Title" 
+                            style={labelsStyle}
+                        />
+                        <p className="font">{placeholderProposal.title}</p>
+                    </DetailField>
+                    
+                    <DetailField>
+                        <Label 
+                            labelName="Short Description" 
+                            style={labelsStyle}
+                        />
+                        <p className="font">{placeholderProposal.summary}</p>
+                    </DetailField>
 
-                <DetailField>
-                    <Label
-                        labelName="Milestones"
-                        questionMarkText="Milestones with deliverables."
-                    />
-                </DetailField>
+                    <DetailField>
+                        <Label 
+                            labelName="Long Description" 
+                            style={labelsStyle} 
+                        />
+                        <p className="font">{placeholderProposal.detailedExplanation}</p>
+                    </DetailField>
 
-                <DetailField>
-                    <Label
-                        labelName="Funding Application(s)"
-                        questionMarkText="Milestones with deliverables."
-                    />
-                </DetailField>
+                    <DetailField>
+                        <Label
+                            labelName="Contributor(s)"
+                            questionMarkText="List of all the contributors."
+                            style={labelsStyle}
+                        />
+                        <ol>
+                            {placeholderProposal.contributors.map((contributor: string, idx: number) => {
+                                return <li className="font">{contributor}</li>
+                            })}
+                        </ol>
+                    </DetailField>
 
-                <DetailField>
-                    <Label
-                        labelName="Creator"
-                        questionMarkText="Milestones with deliverables."
-                    />
-                    <p className="font">{placeholderProposal.creator}</p>
-                </DetailField>
+                    <DetailField>
+                        <Label
+                            labelName="Funding receiving address"
+                            questionMarkText="Funding receiving address"
+                            style={labelsStyle}
+                        />
+                        <p className="font">{placeholderProposal.receivingAddress}</p>
+                    </DetailField>
 
-                <DetailField>
-                    <Label
-                        labelName="Contributors"
-                        questionMarkText="Milestones with deliverables."
-                    />
-                    <ol>
-                        {placeholderProposal.contributors.map((contributor: string, idx: number) => {
-                            return <li className="font">{contributor}</li>
+                    <DetailField>
+                        <Label
+                            labelName="Funding Application(s)"
+                            questionMarkText="Milestones with deliverables."
+                            style={labelsStyle}
+                        />
+                        <p className="font"><b>Total Applications:</b> {placeholderQuestions.length}</p>
+                        <p className="font">You can always answer the required questions later in the "My Activity" page.</p>
+                        {placeholderQuestions.map((placeholderQuestion: any, idx: number) => {
+                            return <FundingPartnersQuestions 
+                                key={idx.toString()}
+                                title={placeholderQuestion.title}
+                                grantGenre={placeholderQuestion.grantGenre}
+                                summary={placeholderQuestion.summary}
+                                questions={placeholderQuestion.questions}
+                                showQuestionsAnswered={true}
+                            />
                         })}
-                    </ol>
-                </DetailField>
+                    </DetailField>
 
+                    <DetailField>
+                        <Label
+                            labelName="Milestone Roadmap / Summary"
+                            questionMarkText="Milestones with deliverables."
+                            style={labelsStyle}
+                        />
+                        <p className="font">Here is a short summary of all the milestones you have created for this proposal.</p>
+                        <RoadmapSummary margin={"20px 0px 70px 0px"} milestones={milestonesPlaceholder} />
+                    </DetailField>
+                </div>
             </Page5Specs>
         </PageWrapper>
     )

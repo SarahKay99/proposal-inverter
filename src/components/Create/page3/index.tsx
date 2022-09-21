@@ -1,4 +1,4 @@
-import { Milestone } from "@context/_types";
+import { Milestone } from "../../../@context/_types";
 import React, { useEffect, useState } from "react"
 import RoadmapSummary from "../../@shared/RoadmapSummary";
 import { 
@@ -15,32 +15,7 @@ import InputField from "src/components/@shared/InputField";
 import Label from "src/components/@shared/Label";
 import Button from "src/components/@shared/Button/Button";
 import MilestoneDisplay from "src/components/@shared/MilestoneDisplay";
-
-const milestonesPlaceholder = [
-    {
-        title: "Milestone 1",
-        deliverables: [
-            "blah skjdhdjkgkjdfgkj sdkjgsdjkgkjsdgk jsdkjgsdk jgkjs dgkjsdkj enfg irjg erjkewhjer hgkerkjg kjerkrekjger", 
-            "Blah", 
-            "blah"
-        ],
-        startDate: "26/10/2023",
-        endDate: "26/10/2024",
-        fundingAmount: "200000.00",
-        fundingCurrency: "USDC"
-    },
-    {
-        title: "Milestone 2",
-        deliverables: ["blah", "Blah", "blah"],
-        startDate: "22/07/2023",
-        endDate: "22/07/2024",
-        fundingAmount: "10000.00",
-        fundingCurrency: "USDC"
-    }
-    
-]
-
-
+import { milestonesPlaceholder } from "../../../@context/placeholders";
 
 export default function Page3() {
 
@@ -78,32 +53,19 @@ export default function Page3() {
                         />
 
                         <div className="estimatedDuration">
-                            <Label labelName="Estimated Duration"/>
-                            <div className="duration">
-                                <div className="start">
-                                    <span className="durationLabel">Start</span>
-                                    <InputField 
-                                        inputType="dateMonthYear"
-                                    />
-                                </div>
-
-                                <div className="end">
-                                    <span className="durationLabel">End</span>
-                                    <InputField 
-                                        inputType="dateMonthYear"
-                                        showUseCurrentDate={false}
-                                    />
-                                </div>
-                                
-                            </div>
+                            <InputField 
+                                labelName="Estimated Milestone Duration"
+                                inputType="timeSelector"
+                                subtext="NOTE: Milestones(s) start once the previous milestone is completed."
+                            />
                         </div>
 
                         <InputField 
                             inputType="coinAmount"
                             placeholder="10.000"
                             defaultCoin="USDC"
-                            labelName="Necessary Funding for Completion of Milestone"
-                            subtext="For this milestone, we need:"
+                            labelName="Necessary Funding"
+                            subtext="Please add the amount of funds you need to complete this milestone."
                         />
 
                         <div className="buttons">
@@ -111,13 +73,13 @@ export default function Page3() {
                                 text="Add Milestone"
                                 onClick={addMilestone}
                                 color="blueIce"
-                                textColor="white"
-                                width={14}
-                                height={2.6}
+                                textColor="default"
+                                width={12}
+                                height={2.8}
                                 sizeType={"em"}
                                 hover={"blueIce"}
                             />
-                            <a onClick={(e) => {}}>Clear Fields</a>
+                            <a className="clearFields" onClick={(e) => {}}>Clear Fields</a>
                         </div>
                     </div>
                     <div className="secondColumn">
@@ -166,7 +128,8 @@ export default function Page3() {
                 }) : <NoMilestoneYet>You haven't added any milestones yet.</NoMilestoneYet>}
 
                 <h2>Milestone Roadmap Summary</h2>
-                <TextSummary>
+                {/* TODO: Add this commented code to the RoadmapSummary element as an alternative display */}
+                {/* <TextSummary>
                     <TextLine>
                         <h3>Period: </h3> 20/07/23 - 20/03/24
                         <span className="days">(250 Days)</span>
@@ -179,7 +142,7 @@ export default function Page3() {
                     <TextLine>
                         <h3>Total Funding: </h3> 200.000 USDC
                     </TextLine>
-                </TextSummary> 
+                </TextSummary>  */}
 
                 <RoadmapSummary margin={"20px 0px 70px 0px"} milestones={milestonesPlaceholder} />
                 

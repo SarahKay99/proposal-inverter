@@ -67,7 +67,7 @@ function MilestoneDisplay({milestone}: MilestoneDisplayProps) {
                 <h3>Necessary Funding Amount</h3>
                 <span className="fundingAmount">{milestone.fundingAmount}</span>
                 <div className="currencyDisplay">
-                    <img src="usdc.png"/>
+                    <img src="USDC.png"/>
                     <span className="currency">{milestone.fundingCurrency}</span>
                 </div>
                 

@@ -20,6 +20,23 @@ export const Page2Specs = styled.div`
         font-size: 16px;
         font-weight: 600;
     }
+
+    .row {
+        margin: 1em 0em 0em 0em;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .card {
+        background-color: var(--brand-deep-dark-blue);
+        border: solid white 1px;
+        border-radius: 10px;
+    }
+
+    .width {
+        width: 50vw;
+    }
 `
 
 export const CreateMemberForm = styled.div`
@@ -40,18 +57,8 @@ export const CreateMemberForm = styled.div`
 
     .form {
         display: flex;
-        align-items: flex-start;
-        width: -webkit-fill-available;
-    }
-
-    .firstColumn {
-        width: 100%;
-        margin: 0em 3em 0em 0em;
-    }
-
-    .secondColumn {
-        width: -webkit-fill-available;
-        width: -moz-available;
+        align-items: center;
+        flex-direction: column;
     }
 `
 
@@ -66,8 +73,6 @@ export const ReceipientWalletForm = styled.div`
 
     .buttons {
         display: flex;
-        width: 50%;
-        justify-content: space-between;
         margin-top: 10px;
     }
 
@@ -79,7 +84,7 @@ export const ReceipientWalletForm = styled.div`
         font-family: Inter;
         font-style: normal;
         font-weight: 500;
-        font-size: 10px;
+        font-size: 14px;
         color: #9398A8;
     }
 
@@ -94,8 +99,34 @@ export const ReceipientWalletForm = styled.div`
 
 export const ProposalWorking = styled.div`
     display: flex;
+    flex-direction: column;
 `
 
 export const ProposalFunding = styled.div`
     display: flex;
+`
+
+export const TokenForm = styled.div`
+    font-family: Inter;
+    font-size: 14px;
+    
+    padding: 10px 15px 30px 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    .label {
+        margin: 1em 0em 0.5em 0em;
+        font-weight: 800;
+    }
+
+    .addToken {
+        display: flex;
+    }
+
+    .text {
+        margin: 2em 0em 1.2em 0em;
+        font-size: 12px;
+        font-weight: 300;
+    }
 `

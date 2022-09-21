@@ -1,4 +1,3 @@
-import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 export const ButtonWrapper = styled.button<{
@@ -9,7 +8,7 @@ export const ButtonWrapper = styled.button<{
     height: 'default' | number,
     sizeType: 'em' | 'px',
     hover: 'default' | 'blueIce' | 'indigo' | 'none',
-    textColor: 'default' | 'white' | 'blue',
+    textColor: 'default' | 'white' | 'blue' | 'babyBlue',
     fontWeight: 'default' | number,
     margin: string
 }>`
@@ -17,7 +16,8 @@ export const ButtonWrapper = styled.button<{
     font-weight: ${(props: any) => props.fontWeight == 'default' ? 700 : props.fontWeight};
     color: ${(props: any) => props.textColor == 'default' ? 'black' 
         : props.textColor == 'white' ? 'white'
-        : props.textColor == 'blue' && 'var(--brand-ocean-blue)'};
+        : props.textColor == 'blue' ? 'var(--brand-ocean-blue)'
+        : props.textColor == 'babyBlue' && 'var(--brand-baby-blue)'};
     background: ${(props: any) => 
         props.color == 'default' ? 'var(--brand-purple-haze-gradient)'
         : props.color == 'blueIce' ? 'var(--brand-blue-ice-gradient)'
@@ -29,12 +29,12 @@ export const ButtonWrapper = styled.button<{
         : `${props.rounding}px`
     };
 
-    width: ${(props: any) => props.width == 'default' ? '88px' 
-        : props.width == 'fill-available' ? '-webkit-fill-available' 
-        : `${props.width}${props.sizeType}` };
-    width: ${(props: any) => props.width == 'default' ? '88px' 
-        : props.width == 'fill-available' ? '-moz-available' 
-        : `${props.width}${props.sizeType}` };
+    width: ${(props: any) => (props.width != 'default' && props.width != 'fill-available') ? `${props.width}${props.sizeType} !important` 
+        : props.width == 'default' ? '88px' 
+        : props.width == 'fill-available' && '-webkit-fill-available'};
+    width: ${(props: any) => (props.width != 'default' && props.width != 'fill-available') ? `${props.width}${props.sizeType} !important` 
+        : props.width == 'default' ? '88px' 
+        : props.width == 'fill-available' && '-moz-available'};
     height: ${(props: any) => props.height == 'default' ? '48px' : `${props.height}${props.sizeType}` };
     
     border: ${(props: any) => props.border == 'none' ? 'none' 

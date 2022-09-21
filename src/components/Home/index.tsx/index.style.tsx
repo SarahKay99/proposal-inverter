@@ -127,6 +127,11 @@ export const ReadOurBlog = styled.div`
         justify-content: space-between;
     }
 
+    img {
+        width: -webkit-fill-available;
+        width: -moz-available;
+    }
+
     h2 {
         font-size: 28px;
     }
