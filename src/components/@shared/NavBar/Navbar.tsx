@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import ConnectWallet from "../ConnectWallet/ConnectWallet";
-import { ClaimAmount, NavbarWrapper, Seperator } from './Navbar.style';
-import Button from '../Button/Button';
-import WalletOptions from "../WalletOptions/WalletOptions";
-import { useAccount } from 'wagmi'
-import { useConnectorPopup } from "../../../@context/connector";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
 import { useNavigate } from 'react-router-dom';
+import { useAccount } from 'wagmi'
+
+import { useConnectorPopup } from "../../../@context/connector";
+import Button from '../Button/Button';
+import ConnectWallet from "../ConnectWallet/ConnectWallet";
+import WalletOptions from "../WalletOptions/WalletOptions";
+import { ClaimAmount, NavbarWrapper, Seperator } from './Navbar.style';
 
 function Navbar() {
 
@@ -20,12 +22,8 @@ function Navbar() {
     return <><NavbarWrapper>
         <div className="leftSide">
             LOGO
-            <a onClick={(e) => {
-                navigate('/', {replace: true});
-            }}>Home</a>
-            <a onClick={(e) => {
-                navigate('/create', {replace: true});
-            }}>Create</a>
+            <a onClick={(e) => {navigate('/', {replace: true})}}>Home</a>
+            <a onClick={(e) => {navigate('/create', {replace: true})}}>Create</a>
             <a>Discover</a>
             <a onClick={(e) => {
                 if (!isConnected) toggleWagmiPopup(e)
